@@ -23,6 +23,10 @@ module.exports = {
         exclude: /node_modules/,
         use: 'eslint-loader',
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   resolve: {
