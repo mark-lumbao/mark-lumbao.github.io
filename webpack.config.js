@@ -7,17 +7,13 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[name].bundle.js',
+    chunkFilename: '[name].[hash].bundle.js',
   },
   devServer: {
     overlay: true,
   },
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: 'babel-loader',
-      },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
@@ -29,7 +25,7 @@ module.exports = {
         enforce: 'pre',
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: 'eslint-loader',
       },
@@ -37,15 +33,27 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.ts', '.tsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
       minify: true,
+      favicon: './src/assets/images/terminal.png',
     }),
     new CleanWebpackPlugin(),
   ],

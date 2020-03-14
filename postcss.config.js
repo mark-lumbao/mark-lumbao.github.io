@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable global-require */
 const tailwindcss = require('tailwindcss');
-// postcss.config.js
 const purgecss = require('@fullhuman/postcss-purgecss')({
 
   // Specify the paths to all of the template files in your project
@@ -21,6 +21,7 @@ module.exports = {
   plugins: [
     tailwindcss('./tailwind.config.js'),
     require('autoprefixer'),
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('cssnano')({
       preset: 'default',
     }),
