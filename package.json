@@ -9,7 +9,7 @@
     "build:stats": "webpack --mode production --json > compilation-stats.json",
     "analyze": "webpack-bundle-analyzer compilation-stats.json build",
     "lint": "eslint --ext .js,.ts,.tsx src",
-    "lint-fix": "eslint --ext .js,.ts,.tsx src --fix"
+    "lint:fix": "eslint --ext .js,.ts,.tsx src --fix"
   },
   "repository": {
     "type": "git",

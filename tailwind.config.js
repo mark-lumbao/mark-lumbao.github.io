@@ -10,13 +10,15 @@ module.exports = {
     appearance: false,
     select: false,
     pointer: false,
-    outline: false,
     resize: false,
     clear: false,
   },
   theme: {
     colors: {
       white: '#ffffff',
+      terminalGray: '#2D3748',
+      red: '#E53E3E',
+      yellow: '#F6E05E',
       teal: {
         800: '#285E61',
         400: '#4FD1C5',
@@ -25,6 +27,9 @@ module.exports = {
     screens: {
       sm: { max: '639px' },
       xsm: { max: '320px' },
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
     },
     fontFamily: {
       heading: ['Courier Prime'],
