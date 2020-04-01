@@ -11,7 +11,7 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-  build-and-run:
+  build-and-deploy:
     executor:
       name: node/default
     steps:
@@ -24,4 +24,9 @@ workflows:
     build-and-test:
       jobs:
         - build-and-test
-        - build-and-run
+        - build-and-run:  
+            requires:
+              - build-and-test
+            filters:
+              branches:
+                only: master
