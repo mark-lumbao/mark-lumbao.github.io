@@ -9,7 +9,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   content: [
     './src/**/*.ts',
     './src/**/*.tsx',
-    './src/**/*.jsx',
+    './src/**/*.css',
     './public/**/*.html',
   ],
 
@@ -21,9 +21,12 @@ module.exports = {
   plugins: [
     tailwindcss('./tailwind.config.js'),
     require('autoprefixer'),
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('cssnano')({
-      preset: 'default',
+      preset: ['default', {
+        discardComments: {
+          removeAll: true,
+        },
+      }],
     }),
     ...process.env.NODE_ENV === 'production'
       ? [purgecss]
