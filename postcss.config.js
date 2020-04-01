@@ -9,7 +9,6 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   content: [
     './src/**/*.ts',
     './src/**/*.tsx',
-    './src/**/*.css',
     './public/**/*.html',
   ],
 
