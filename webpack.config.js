@@ -48,6 +48,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'src'),
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({

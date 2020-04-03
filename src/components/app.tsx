@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 
-const MainNavigation = lazy(() => import('./main-navigation'));
-const Terminal = lazy(() => import('./terminal'));
-const Footer = lazy(() => import('./footer'));
+const MainNavigation = lazy(() => import('components/main-navigation'));
+const Terminal = lazy(() => import('components/terminal'));
+const Footer = lazy(() => import('components/footer'));
 
 const App = () => (
   <Suspense fallback={<div>Loading...</div>}>
