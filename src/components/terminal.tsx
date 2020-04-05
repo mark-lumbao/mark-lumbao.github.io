@@ -1,12 +1,39 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
+import * as COMMANDS from 'constants/commands';
+import { RootState } from 'reducers/';
+import { fetchLanguages } from 'actions/languages';
+
+// TODO create SAGAS and connect it here
 
 export interface TerminalResultProps {
   command: string;
   result: string;
+  type: ResultType;
 }
 
-const Terminal: React.FC = () => {
+export enum ResultType {
+  ERROR,
+  DEFAULT,
+}
+
+const createResult = (
+  props: TerminalResultProps,
+): TerminalResultProps => props;
+
+const mapStateToProps = (state: RootState) => ({
+  languages: state.languages,
+});
+
+const mapDispathToProps = { fetchLanguages };
+
+const connector = connect(mapStateToProps, mapDispathToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+const Terminal = (props: PropsFromRedux) => {
   let focusedInput: any = null;
   const [command, setCommand] = useState(undefined);
   const [results, setResults] = useState([]);
@@ -20,23 +47,36 @@ const Terminal: React.FC = () => {
     setFocusToMainInput();
   };
 
-  const createResult = (
-    props: TerminalResultProps,
-  ): TerminalResultProps => props;
-
   const handleFormSubmit = (
     event: React.FormEvent,
   ) => {
     event.preventDefault();
-    if (command === 'clear') {
-      setResults([]);
-    } else {
-      const newResult = createResult({
-        command,
-        result: 'this is a placeholder result :p',
-      });
-      setResults([...results, newResult]);
+
+    switch (command) {
+      case COMMANDS.CLEAR: {
+        setResults([]);
+        break;
+      }
+      case COMMANDS.SHOW: {
+        const newResult = createResult({
+          command,
+          type: ResultType.DEFAULT,
+          result: `This is a placeholder result for: ${command}.`,
+        });
+        props.fetchLanguages();
+        setResults([...results, newResult]);
+        break;
+      }
+      default: {
+        const newErrorResult = createResult({
+          command,
+          type: ResultType.ERROR,
+          result: `Unknown command "${command}" found.`,
+        });
+        setResults([...results, newErrorResult]);
+      }
     }
+
     setCommand(''); // clear command input
   };
 
@@ -47,14 +87,17 @@ const Terminal: React.FC = () => {
     setCommand(value);
   };
 
-  useEffect(() => { setFocusToMainInput(); }, []);
+  useEffect(() => {
+    console.log('Languages: ', props.languages);
+    setFocusToMainInput();
+  }, []);
 
   const renderResults = () => results.map((result: TerminalResultProps) => (
-    <div>
+    <>
       <span className="text-yellow">$ &nbsp;</span>
       <span className="text-white">{result.command}</span>
-      <p className="text-terminalGreen ml-4">{result.result}</p>
-    </div>
+      <p className={`text-${result.type === ResultType.ERROR ? 'red' : 'terminalGreen'} ml-4`}>{result.result}</p>
+    </>
   ));
 
   return (
@@ -75,7 +118,7 @@ const Terminal: React.FC = () => {
           onChange={handleCommandInputChange}
           type="text"
           spellCheck={false}
-          placeholder="/* use list --commands & show available commands. */"
+          placeholder="/* use help for your guide */"
           ref={(input) => { focusedInput = input; }}
         />
       </form>
@@ -83,4 +126,4 @@ const Terminal: React.FC = () => {
   );
 };
 
-export default Terminal;
+export default connector(Terminal);

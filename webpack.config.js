@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -10,7 +11,15 @@ module.exports = {
     chunkFilename: '[name].[hash].bundle.js',
   },
   devServer: {
-    overlay: true,
+    hot: true,
+    contentBase: path.join(__dirname, '/dist'),
+    writeToDisk: true,
+    historyApiFallback: true,
+    compress: true,
+    overlay: {
+      errors: true,
+      warnings: true,
+    },
   },
   module: {
     rules: [
@@ -59,6 +68,9 @@ module.exports = {
       minify: true,
       favicon: './src/assets/images/terminal.png',
     }),
+    new CopyWebpackPlugin([
+      { from: path.join(__dirname, 'public/assets'), to: 'assets' },
+    ]),
     new CleanWebpackPlugin(),
   ],
 };
