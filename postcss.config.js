@@ -9,6 +9,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   content: [
     './src/**/*.ts',
     './src/**/*.tsx',
+    './public/**/*.html',
   ],
 
   // Include any special characters you're using in this regular expression
