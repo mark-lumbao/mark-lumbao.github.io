@@ -1,16 +1,124 @@
-import React, { useEffect } from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
+import React, { useEffect, useState } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
+import * as COMMANDS from 'constants/commands';
+import { RootState } from 'reducers/';
+import { fetchLanguages } from 'actions/languages';
 
-const Terminal: React.FC = () => {
+// TODO create SAGAS and connect it here
+
+export interface TerminalResultProps {
+  command: string;
+  result: string;
+  type: ResultType;
+}
+
+export enum ResultType {
+  ERROR,
+  DEFAULT,
+}
+
+const createResult = (
+  props: TerminalResultProps,
+): TerminalResultProps => props;
+
+const mapStateToProps = (state: RootState) => ({
+  languages: state.languages,
+});
+
+const mapDispathToProps = { fetchLanguages };
+
+const connector = connect(mapStateToProps, mapDispathToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+const Terminal = (props: PropsFromRedux) => {
   let focusedInput: any = null;
-  useEffect(() => { focusedInput.focus(); }, []);
+  const [command, setCommand] = useState(undefined);
+  const [results, setResults] = useState([]);
+
+  const setFocusToMainInput = () => { focusedInput.focus(); };
+
+  const handleFocusClick = (
+    event: React.MouseEvent,
+  ) => {
+    event.preventDefault();
+    setFocusToMainInput();
+  };
+
+  const handleFormSubmit = (
+    event: React.FormEvent,
+  ) => {
+    event.preventDefault();
+
+    switch (command) {
+      case COMMANDS.CLEAR: {
+        setResults([]);
+        break;
+      }
+      case COMMANDS.SHOW: {
+        const newResult = createResult({
+          command,
+          type: ResultType.DEFAULT,
+          result: `This is a placeholder result for: ${command}.`,
+        });
+        props.fetchLanguages();
+        setResults([...results, newResult]);
+        break;
+      }
+      default: {
+        const newErrorResult = createResult({
+          command,
+          type: ResultType.ERROR,
+          result: `Unknown command "${command}" found.`,
+        });
+        setResults([...results, newErrorResult]);
+      }
+    }
+
+    setCommand(''); // clear command input
+  };
+
+  const handleCommandInputChange = (
+    event: React.FormEvent<HTMLInputElement>,
+  ) => {
+    const { value } = event.currentTarget;
+    setCommand(value);
+  };
+
+  useEffect(() => {
+    console.log('Languages: ', props.languages);
+    setFocusToMainInput();
+  }, []);
+
+  const renderResults = () => results.map((result: TerminalResultProps) => (
+    <>
+      <span className="text-yellow">$ &nbsp;</span>
+      <span className="text-white">{result.command}</span>
+      <p className={`text-${result.type === ResultType.ERROR ? 'red' : 'terminalGreen'} ml-4`}>{result.result}</p>
+    </>
+  ));
+
   return (
-    <div className="h-full content-start p-5 rounded bg-terminalGray">
-      <form className="flex flex-row">
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={handleFocusClick}
+      onKeyDown={() => {}}
+      style={{ maxHeight: '75vh' }}
+      className="h-full w-full overflow-y-scroll content-start p-5 rounded bg-terminalGray"
+    >
+      {renderResults()}
+      <form onSubmit={handleFormSubmit} className="flex flex-row">
         <span className="text-yellow">$ &nbsp;</span>
         <input
           className="flex-1 outline-none text-white bg-terminalGray"
+          value={command}
+          onChange={handleCommandInputChange}
           type="text"
           spellCheck={false}
+          placeholder="/* use help for your guide */"
           ref={(input) => { focusedInput = input; }}
         />
       </form>
@@ -18,4 +126,4 @@ const Terminal: React.FC = () => {
   );
 };
 
-export default Terminal;
+export default connector(Terminal);

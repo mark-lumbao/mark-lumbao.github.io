@@ -1,6 +1,6 @@
 import * as React from 'react';
-import logo from '../assets/images/terminal.png';
-import github from '../assets/images/github.png';
+import logo from 'assets/images/terminal.png';
+import github from 'assets/images/github.png';
 
 const MainNavigation: React.FC = () => (
   <div className="border-dashed border-b-2 border-teal-400 p-3">
