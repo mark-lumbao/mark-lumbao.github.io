@@ -1,0 +1,42 @@
+[
+  {
+    "name": "C#",
+    "maturityLevel": 5,
+    "relatedProjects": []
+  },
+  {
+    "name": "Java",
+    "maturityLevel": 5,
+    "relatedProjects": []
+  },
+  {
+    "name": "PHP",
+    "maturityLevel": 5,
+    "relatedProjects": []
+  },
+  {
+    "name": "Javascript",
+    "maturityLevel": 8,
+    "relatedProjects": []
+  },
+  {
+    "name": "Typescript",
+    "maturityLevel": 8,
+    "relatedProjects": []
+  },
+  {
+    "name": "CSS",
+    "maturityLevel": 8,
+    "relatedProjects": []
+  },
+  {
+    "name": "HTML5",
+    "maturityLevel": 9,
+    "relatedProjects": []
+  },
+  {
+    "name": "Swift",
+    "maturityLevel": 5,
+    "relatedProjects": []
+  }
+]

@@ -34,6 +34,7 @@ module.exports = {
     colors: {
       white: '#ffffff',
       terminalGray: '#2D3748',
+      terminalGreen: '#68D391',
       red: '#E53E3E',
       yellow: '#F6E05E',
       teal: {
