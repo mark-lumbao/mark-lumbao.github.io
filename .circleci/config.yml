@@ -1,19 +1,13 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1
+  node: circleci/node@2.0.1
   heroku: circleci/heroku@1.0.1
 jobs:
   build:
-    executor:
-      name: node/default
-      tag: '10.4'
+    executor: node/default
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm run build
-      - run: npm run test
+      - node/install-packages
   deploy:
     executor: heroku/default
     steps:
