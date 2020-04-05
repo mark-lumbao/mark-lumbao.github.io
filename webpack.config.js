@@ -65,9 +65,9 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: 'public/index.html',
       minify: true,
-      favicon: './src/assets/images/terminal.png',
+      favicon: 'src/assets/images/terminal.png',
     }),
     new CopyWebpackPlugin([
       { from: path.join(__dirname, 'public/assets'), to: 'assets' },
