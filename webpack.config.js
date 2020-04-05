@@ -63,6 +63,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       minify: true,
@@ -71,6 +72,5 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: path.join(__dirname, 'public/assets'), to: 'assets' },
     ]),
-    new CleanWebpackPlugin(),
   ],
 };
