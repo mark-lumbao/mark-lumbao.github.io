@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - node/install-packages
-      - npm run test
+      # - npm run test
   deploy:
     executor: heroku/default
     steps:
