@@ -7,12 +7,8 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
-  deploy:
-    executor: heroku/default
+      - node/install-packages
+      - npm run test
     steps:
       - checkout
       - heroku/install
