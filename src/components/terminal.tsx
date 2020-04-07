@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import * as COMMANDS from 'constants/commands';
@@ -88,7 +86,7 @@ const Terminal = (props: PropsFromRedux) => {
   };
 
   useEffect(() => {
-    console.log('Languages: ', props.languages);
+    // console.log('Languages: ', props.languages);
     setFocusToMainInput();
   }, []);
 

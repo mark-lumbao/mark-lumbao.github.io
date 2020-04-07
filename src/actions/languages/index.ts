@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { LanguageActionTypes, FETCH_LANGUAGES, CLEAR_LANGUAGES } from './types';
 
 export const fetchLanguages = (): LanguageActionTypes => ({
