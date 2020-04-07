@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import * as COMMANDS from 'constants/commands';
@@ -88,15 +87,28 @@ const Terminal = (props: PropsFromRedux) => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line no-console
     console.log('Languages: ', props.languages);
     setFocusToMainInput();
   }, []);
+
+  const returnClass = (res: ResultType): string => {
+    switch (res) {
+      case ResultType.DEFAULT:
+        return 'text-terminalGreen';
+      case ResultType.ERROR:
+        return 'text-red';
+      default:
+        return 'text-terminalGreen';
+    }
+  };
 
   const renderResults = () => results.map((result: TerminalResultProps) => (
     <>
       <span className="text-yellow">$ &nbsp;</span>
       <span className="text-white">{result.command}</span>
-      <p className={`text-${result.type === ResultType.ERROR ? 'red' : 'terminalGreen'} ml-4`}>{result.result}</p>
+      {/* eslint-disable-next-line prefer-template */}
+      <p className={returnClass(result.type) + ' ml-4'}>{result.result}</p>
     </>
   ));
 
