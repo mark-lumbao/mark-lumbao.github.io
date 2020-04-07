@@ -3,7 +3,7 @@ orbs:
   node: circleci/node@2.0.1
   heroku: circleci/heroku@1.0.1
 jobs:
-  build-and-test:
+  build:
     executor: node/default
     steps:
       - checkout
@@ -17,10 +17,10 @@ jobs:
 workflows:
     build-test-deploy:
       jobs:
-        - build-and-test
+        - build
         - deploy:  
             requires:
-              - build-and-test
+              - build
             filters:
               branches:
                 only: master
