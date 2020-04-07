@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { LanguageProps } from 'interfaces/language';
 import { FETCH_LANGUAGES, CLEAR_LANGUAGES, LanguageActionTypes } from 'actions/languages/types';
 

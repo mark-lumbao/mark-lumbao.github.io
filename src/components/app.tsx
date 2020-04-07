@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { lazy, Suspense } from 'react';
 
 const MainNavigation = lazy(() => import('components/main-navigation'));
