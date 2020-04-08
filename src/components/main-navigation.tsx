@@ -7,10 +7,12 @@ const MainNavigation: React.FC = () => (
     <div className="container mx-auto flex items-center">
       <div className="flex flex-1 items-center flex-initial">
         <img alt="logo" src={logo} className="w-10 mr-2" />
-        <span className="font-heading text-base text-white">mark_lumbao_portfolio_v1.0</span>
+        <span className="font-heading text-base text-white">M.A.L v0.1</span>
       </div>
       <div className="flex flex-1 justify-end">
-        <img alt="github" src={github} className="w-8 xsm:w-7" />
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/doldol999">
+          <img alt="github" src={github} className="w-8 xsm:w-7" />
+        </a>
       </div>
     </div>
   </div>
