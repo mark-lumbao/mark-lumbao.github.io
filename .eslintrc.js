@@ -28,6 +28,7 @@ module.exports = {
     "import/no-unresolved": 0,
     "import/extensions": 0,
     "linebreak-style": 0,
+    "react/no-array-index-key": 0,
     "@typescript-eslint/no-unused-vars": [
       2,
       {

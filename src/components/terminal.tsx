@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import * as COMMANDS from 'constants/commands';
 import { RootState } from 'reducers/';
@@ -33,7 +33,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const Terminal = (props: PropsFromRedux) => {
   let focusedInput: any = null;
-  const [command, setCommand] = useState(undefined);
+  const [command, setCommand] = useState('');
   const [results, setResults] = useState([]);
 
   const setFocusToMainInput = () => { focusedInput.focus(); };
@@ -89,7 +89,7 @@ const Terminal = (props: PropsFromRedux) => {
     // eslint-disable-next-line no-console
     console.log('Languages: ', props.languages);
     setFocusToMainInput();
-  }, []);
+  }, [props]);
 
   const returnClass = (res: ResultType): string => {
     switch (res) {
@@ -102,13 +102,13 @@ const Terminal = (props: PropsFromRedux) => {
     }
   };
 
-  const renderResults = () => results.map((result: TerminalResultProps) => (
-    <>
+  const renderResults = () => results.map((result: TerminalResultProps, index) => (
+    <Fragment key={index}>
       <span className="text-yellow">$ &nbsp;</span>
-      <span className="text-white">{result.command}</span>
+      <span className="text-white">{result.command.length < 2 ? 'EMPTY' : result.command}</span>
       {/* eslint-disable-next-line prefer-template */}
       <p className={returnClass(result.type) + ' ml-4'}>{result.result}</p>
-    </>
+    </Fragment>
   ));
 
   return (
@@ -117,11 +117,11 @@ const Terminal = (props: PropsFromRedux) => {
       tabIndex={0}
       onClick={handleFocusClick}
       onKeyDown={() => {}}
-      style={{ maxHeight: '75vh' }}
+      style={{ maxHeight: '80vh' }}
       className="h-full w-full overflow-y-scroll content-start p-5 rounded bg-terminalGray"
     >
       {renderResults()}
-      <form onSubmit={handleFormSubmit} className="flex flex-row">
+      <form onSubmit={handleFormSubmit} autoComplete="off" className="flex flex-row">
         <span className="text-yellow">$ &nbsp;</span>
         <input
           className="flex-1 outline-none text-white bg-terminalGray"
