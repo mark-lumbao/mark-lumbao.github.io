@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import * as COMMANDS from 'constants/commands';
-import { RootState } from 'reducers/';
-import { fetchLanguages } from 'actions/languages';
+import { RootState } from 'store/reducers';
+import { fetchLanguagesRequest } from 'store/actions/languages';
 
-// TODO create SAGAS and connect it here
+// RECAP: Implemented Saga for Languages Fetch
+// TODO: Implement other Sagas for other Fetches
 
 export interface TerminalResultProps {
   command: string;
@@ -25,9 +26,9 @@ const mapStateToProps = (state: RootState) => ({
   languages: state.languages,
 });
 
-const mapDispathToProps = { fetchLanguages };
+const mapDispatchToProps = { fetchLanguagesRequest };
 
-const connector = connect(mapStateToProps, mapDispathToProps);
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
@@ -56,12 +57,12 @@ const Terminal = (props: PropsFromRedux) => {
         break;
       }
       case COMMANDS.SHOW: {
+        props.fetchLanguagesRequest();
         const newResult = createResult({
           command,
           type: ResultType.DEFAULT,
           result: `This is a placeholder result for: ${command}.`,
         });
-        props.fetchLanguages();
         setResults([...results, newResult]);
         break;
       }
