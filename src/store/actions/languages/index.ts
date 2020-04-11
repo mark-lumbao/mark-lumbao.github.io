@@ -1,4 +1,5 @@
 import { LanguageProps } from 'interfaces/language';
+import { LanguagesState } from 'store/reducers/languages';
 import {
   LanguageActionTypes,
   CLEAR_LANGUAGES,
@@ -9,16 +10,17 @@ import {
 
 export const fetchLanguagesRequest = (): LanguageActionTypes => ({
   type: FETCH_LANGUAGES_REQUEST,
+  payload: { fetching: true } as LanguagesState,
 });
 
 export const fetchLanguagesSuccess = (data: LanguageProps[]): LanguageActionTypes => ({
   type: FETCH_LANGUAGES_SUCCES,
-  payload: data,
+  payload: { data, fetching: false } as LanguagesState,
 });
 
-export const fetchLanguagesFailure = (error: string): LanguageActionTypes => ({
+export const fetchLanguagesFailure = (errorMessage: string): LanguageActionTypes => ({
   type: FETCH_LANGUAGES_FAILURE,
-  payload: error,
+  payload: { errorMessage, fetching: false } as LanguagesState,
 });
 
 export const clearLanguages = (): LanguageActionTypes => ({

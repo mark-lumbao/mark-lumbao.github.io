@@ -4,12 +4,11 @@ import * as COMMANDS from 'constants/commands';
 import { RootState } from 'store/reducers';
 import { fetchLanguagesRequest } from 'store/actions/languages';
 
-// RECAP: Implemented Saga for Languages Fetch
 // TODO: Implement other Sagas for other Fetches
 
 export interface TerminalResultProps {
   command: string;
-  result: string;
+  result: string[];
   type: ResultType;
 }
 
@@ -33,7 +32,8 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const Terminal = (props: PropsFromRedux) => {
-  let focusedInput: any = null;
+  let focusedInput: HTMLInputElement = null;
+
   const [command, setCommand] = useState('');
   const [results, setResults] = useState([]);
 
@@ -51,26 +51,52 @@ const Terminal = (props: PropsFromRedux) => {
   ) => {
     event.preventDefault();
 
-    switch (command) {
-      case COMMANDS.CLEAR: {
-        setResults([]);
-        break;
-      }
+    const trimmedCMD = command.trim();
+
+    switch (trimmedCMD) {
       case COMMANDS.SHOW: {
-        props.fetchLanguagesRequest();
         const newResult = createResult({
           command,
           type: ResultType.DEFAULT,
-          result: `This is a placeholder result for: ${command}.`,
+          result: [
+            'Available FLAGS for show:',
+            '--languages',
+            '--bio (pending)',
+            '--employment (pending)',
+            '--projects (pending)',
+            '--tools (pending)',
+          ],
         });
         setResults([...results, newResult]);
+        break;
+      }
+      case COMMANDS.HELP: {
+        const newResult = createResult({
+          command,
+          type: ResultType.DEFAULT,
+          result: ['Available commands: ', 'show, clear, help'],
+        });
+        setResults([...results, newResult]);
+        break;
+      }
+      case COMMANDS.SHOW_LANGUAGES: {
+        const newResult = createResult({
+          command,
+          type: ResultType.DEFAULT,
+          result: props.languages.data.map((lang) => lang.name),
+        });
+        setResults([...results, newResult]);
+        break;
+      }
+      case COMMANDS.CLEAR: {
+        setResults([]);
         break;
       }
       default: {
         const newErrorResult = createResult({
           command,
           type: ResultType.ERROR,
-          result: `Unknown command "${command}" found.`,
+          result: [`Unknown command "${command}" found.`],
         });
         setResults([...results, newErrorResult]);
       }
@@ -87,8 +113,10 @@ const Terminal = (props: PropsFromRedux) => {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log('Languages: ', props.languages);
+    props.fetchLanguagesRequest();
+  }, []);
+
+  useEffect(() => {
     setFocusToMainInput();
   }, [props]);
 
@@ -106,9 +134,9 @@ const Terminal = (props: PropsFromRedux) => {
   const renderResults = () => results.map((result: TerminalResultProps, index) => (
     <Fragment key={index}>
       <span className="text-yellow">$ &nbsp;</span>
-      <span className="text-white">{result.command.length < 2 ? 'EMPTY' : result.command}</span>
+      <span className="text-white">{result.command.length < 1 ? 'EMPTY' : result.command}</span>
       {/* eslint-disable-next-line prefer-template */}
-      <p className={returnClass(result.type) + ' ml-4'}>{result.result}</p>
+      { result.result.map((text: any) => <p className={returnClass(result.type) + ' ml-4'}>{text}</p>) }
     </Fragment>
   ));
 
@@ -118,7 +146,7 @@ const Terminal = (props: PropsFromRedux) => {
       tabIndex={0}
       onClick={handleFocusClick}
       onKeyDown={() => {}}
-      style={{ maxHeight: '80vh' }}
+      style={{ maxHeight: '75vh' }}
       className="h-full w-full overflow-y-scroll content-start p-5 rounded bg-terminalGray"
     >
       {renderResults()}
