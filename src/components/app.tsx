@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 
 const MainNavigation = lazy(() => import('components/main-navigation'));
-const Terminal = lazy(() => import('components/terminal'));
+const Terminal = lazy(() => import('components/shared/terminal'));
 const Footer = lazy(() => import('components/footer'));
 
 const App = () => (

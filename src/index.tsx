@@ -5,7 +5,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import 'assets/tailwind.css';
-import rootReducer from 'reducers/';
+import rootReducer from 'store/reducers';
+import rootSaga from 'store/sagas';
 import App from 'components/app';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -18,6 +19,8 @@ const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(...middleware)),
 );
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider
