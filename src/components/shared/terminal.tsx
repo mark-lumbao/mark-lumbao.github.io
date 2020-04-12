@@ -33,11 +33,15 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const Terminal = (props: PropsFromRedux) => {
   let focusedInput: HTMLInputElement = null;
+  let scrollableContainer: HTMLDivElement = null;
 
   const [command, setCommand] = useState('');
   const [results, setResults] = useState([]);
 
   const setFocusToMainInput = () => { focusedInput.focus(); };
+
+  const scrollContainerToBottom = (
+  ) => { scrollableContainer.scrollTo(0, scrollableContainer.scrollHeight); };
 
   const handleFocusClick = (
     event: React.MouseEvent,
@@ -99,6 +103,7 @@ const Terminal = (props: PropsFromRedux) => {
           result: [`Unknown command "${command}" found.`],
         });
         setResults([...results, newErrorResult]);
+        break;
       }
     }
 
@@ -111,14 +116,6 @@ const Terminal = (props: PropsFromRedux) => {
     const { value } = event.currentTarget;
     setCommand(value);
   };
-
-  useEffect(() => {
-    props.fetchLanguagesRequest();
-  }, []);
-
-  useEffect(() => {
-    setFocusToMainInput();
-  }, [props]);
 
   const returnClass = (res: ResultType): string => {
     switch (res) {
@@ -140,6 +137,15 @@ const Terminal = (props: PropsFromRedux) => {
     </Fragment>
   ));
 
+  useEffect(() => { // only runs once
+    props.fetchLanguagesRequest();
+  }, []);
+
+  useEffect(() => { // runs everytime the component renders
+    setFocusToMainInput();
+    scrollContainerToBottom();
+  });
+
   return (
     <div
       role="button"
@@ -148,6 +154,7 @@ const Terminal = (props: PropsFromRedux) => {
       onKeyDown={() => {}}
       style={{ maxHeight: '75vh' }}
       className="h-full w-full overflow-y-scroll content-start p-5 rounded bg-terminalGray"
+      ref={(div) => { scrollableContainer = div; }}
     >
       {renderResults()}
       <form onSubmit={handleFormSubmit} autoComplete="off" className="flex flex-row">
