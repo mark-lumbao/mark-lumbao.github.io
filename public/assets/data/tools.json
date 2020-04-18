@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Android Studio",
+    "maturityLevel": 6,
+    "languageUsed": "Java",
+    "relatedProjects": []
+  },
+  {
+    "name": "Visual Studio",
+    "maturityLevel": 6,
+    "languageUsed": "C#",
+    "relatedProjects": []
+  },
+  {
+    "name": "Unity 3D",
+    "maturityLevel": 6,
+    "languageUsed": "C#",
+    "relatedProjects": []
+  },
+  {
+    "name": "Visual Studio Code",
+    "maturityLevel": 8,
+    "languageUsed": "PHP, JS, TS, HTML, CSS",
+    "relatedProjects": []
+  },
+  {
+    "name": "XCode",
+    "maturityLevel": 7,
+    "languageUsed": "Swift",
+    "relatedProjects": []
+  },
+  {
+    "name": "WordPress",
+    "maturityLevel": 7,
+    "languageUsed": "PHP, HTML, JS, CSS",
+    "relatedProjects": []
+  },
+  {
+    "name": "React",
+    "maturityLevel": 6,
+    "languageUsed": "JS, TS, CSS",
+    "relatedProjects": []
+  },
+  {
+    "name": "Webpack",
+    "maturityLevel": 6,
+    "languageUsed": "JS, TS",
+    "relatedProjects": []
+  },
+  {
+    "name": "Babel",
+    "maturityLevel": 6,
+    "languageUsed": "JS, TS",
+    "relatedProjects": []
+  },
+  {
+    "name": "TailwindCSS",
+    "maturityLevel": 6,
+    "languageUsed": "HTML, CSS",
+    "relatedProjects": []
+  },
+  {
+    "name": "Material UI",
+    "maturityLevel": 6,
+    "languageUsed": "HTML, CSS, TS, JS",
+    "relatedProjects": []
+  },
+  {
+    "name": "NodeJS",
+    "maturityLevel": 6,
+    "languageUsed": "JS",
+    "relatedProjects": []
+  }
+]

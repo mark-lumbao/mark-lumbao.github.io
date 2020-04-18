@@ -30,6 +30,11 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.js$/,
         use: ['source-map-loader'],
         enforce: 'pre',
       },
@@ -64,13 +69,13 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin([
+      { from: path.join(__dirname, 'public/assets'), to: 'assets' },
+    ]),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       minify: true,
       favicon: 'src/assets/images/terminal.png',
     }),
-    new CopyWebpackPlugin([
-      { from: path.join(__dirname, 'public/assets'), to: 'assets' },
-    ]),
   ],
 };
