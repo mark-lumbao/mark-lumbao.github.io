@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import LanguageReducers from './languages';
+import LanguageReducer from './languages';
+import BioReducer from './bio';
 
 const rootReducer = combineReducers({
-  languages: LanguageReducers,
+  languages: LanguageReducer,
+  bio: BioReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>
