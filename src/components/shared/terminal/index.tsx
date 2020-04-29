@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { RootState } from 'store/reducers';
 import { fetchLanguagesRequest } from 'store/actions/languages';
+import { fetchEmploymentRequest } from 'store/actions/employment';
 import { fetchBioRequest } from 'store/actions/bio';
 import { TerminalResultProps } from './types';
 import * as UTILS from './utils';
@@ -12,7 +13,11 @@ const mapStateToProps = (state: RootState) => ({
   languages: state.languages,
 });
 
-const mapDispatchToProps = { fetchLanguagesRequest, fetchBioRequest };
+const mapDispatchToProps = {
+  fetchLanguagesRequest,
+  fetchBioRequest,
+  fetchEmploymentRequest,
+};
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
@@ -56,6 +61,7 @@ const Terminal = (props: PropsFromRedux) => {
   useEffect(() => {
     props.fetchLanguagesRequest();
     props.fetchBioRequest();
+    props.fetchEmploymentRequest();
   }, []); // runs once
 
   useEffect(() => { // runs everytime the component renders

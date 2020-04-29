@@ -5,19 +5,18 @@ import {
   FETCH_BIO_SUCCESS,
   FETCH_BIO_FAILURE,
 } from 'store/actions/bio/types';
-import { BioState } from 'store/reducers/bio';
 
 export const fetchBioRequest = (): BioActionTypes => ({
   type: FETCH_BIO_REQUEST,
-  payload: { fetching: true } as BioState,
+  payload: { fetching: true },
 });
 
 export const fetchBioSuccess = (data: BioProps): BioActionTypes => ({
   type: FETCH_BIO_SUCCESS,
-  payload: { data, fetching: false } as BioState,
+  payload: { data, fetching: false },
 });
 
 export const fetchBioFailure = (errorMessage: string): BioActionTypes => ({
   type: FETCH_BIO_FAILURE,
-  payload: { errorMessage, fetching: false } as BioState,
+  payload: { errorMessage, fetching: false },
 });
