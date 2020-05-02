@@ -62,7 +62,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
-    modules: [
+    modules: [ // add these to improve module resolves
       'node_modules',
       path.resolve(__dirname, 'src'),
     ],
