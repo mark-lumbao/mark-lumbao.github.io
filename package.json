@@ -41,6 +41,8 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.9.0",
     "@types/autoprefixer": "^9.7.2",
     "@types/cssnano": "^4.0.0",
     "@types/react": "^16.9.32",
