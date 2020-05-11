@@ -1,10 +1,7 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { fetchEmployment } from 'constants/api';
 import { FETCH_EMPLOYMENT_REQUEST } from 'store/actions/employment/types';
-import {
-  fetchEmploymentSuccess,
-  fetchEmploymentFailure,
-} from 'store/actions/employment';
+import { fetchEmploymentSuccess, fetchEmploymentFailure } from 'store/actions/employment';
+import { fetchEmployment } from 'constants/api';
 
 function* fetchEmploymentAsync() {
   try {

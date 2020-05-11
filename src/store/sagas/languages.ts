@@ -1,11 +1,6 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
-import {
-  FETCH_LANGUAGES_REQUEST,
-} from 'store/actions/languages/types';
-import {
-  fetchLanguagesFailure,
-  fetchLanguagesSuccess,
-} from 'store/actions/languages';
+import { FETCH_LANGUAGES_REQUEST } from 'store/actions/languages/types';
+import { fetchLanguagesFailure, fetchLanguagesSuccess } from 'store/actions/languages';
 import { fetchLang } from 'constants/api';
 
 function* fetchLanguages() {

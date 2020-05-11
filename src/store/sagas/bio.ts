@@ -1,9 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { FETCH_BIO_REQUEST } from 'store/actions/bio/types';
-import {
-  fetchBioSuccess,
-  fetchBioFailure,
-} from 'store/actions/bio';
+import { fetchBioSuccess, fetchBioFailure } from 'store/actions/bio';
 import { fetchBio } from 'constants/api';
 
 function* fetchBioAsync() {
