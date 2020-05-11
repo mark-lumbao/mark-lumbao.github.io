@@ -4,6 +4,7 @@ import { RootState } from 'store/reducers';
 import { fetchLanguagesRequest } from 'store/actions/languages';
 import { fetchEmploymentRequest } from 'store/actions/employment';
 import { fetchBioRequest } from 'store/actions/bio';
+import { fetchToolsRequest } from 'store/actions/tools';
 import { TerminalResultProps } from './types';
 import * as UTILS from './utils';
 
@@ -11,12 +12,16 @@ import * as UTILS from './utils';
 
 const mapStateToProps = (state: RootState) => ({
   languages: state.languages,
+  tools: state.tools,
+  employment: state.employment,
+  bio: state.bio,
 });
 
 const mapDispatchToProps = {
   fetchLanguagesRequest,
   fetchBioRequest,
   fetchEmploymentRequest,
+  fetchToolsRequest,
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -30,16 +35,12 @@ const Terminal = (props: PropsFromRedux) => {
   const [command, setCommand] = useState('');
   const [results, setResults] = useState<TerminalResultProps[]>([]);
 
-  const handleFocusClick = (
-    event: React.MouseEvent,
-  ) => {
+  const handleFocusClick = (event: React.MouseEvent) => {
     event.preventDefault();
     UTILS.setFocusToInput(focusedInput);
   };
 
-  const handleFormSubmit = (
-    event: React.FormEvent,
-  ) => {
+  const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
     if (!UTILS.resultFactory(command.trim(), props)) {
@@ -51,9 +52,7 @@ const Terminal = (props: PropsFromRedux) => {
     setCommand(''); // clear command input
   };
 
-  const handleCommandInputChange = (
-    event: React.FormEvent<HTMLInputElement>,
-  ) => {
+  const handleCommandInputChange = (event: React.FormEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
     setCommand(value);
   };
@@ -62,6 +61,7 @@ const Terminal = (props: PropsFromRedux) => {
     props.fetchLanguagesRequest();
     props.fetchBioRequest();
     props.fetchEmploymentRequest();
+    props.fetchToolsRequest();
   }, []); // runs once
 
   useEffect(() => { // runs everytime the component renders

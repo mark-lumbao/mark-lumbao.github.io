@@ -1,11 +1,9 @@
 import React from 'react';
 
-export interface CenteredMessageProps {
-  message: string;
-}
-
-export default ({ message }: CenteredMessageProps) => (
+const CenteredMessage = ({ message }: { message: string }) => (
   <div className="h-screen flex justify-center items-center">
     <h1>{message}</h1>
   </div>
 );
+
+export default CenteredMessage;

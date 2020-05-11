@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable import/no-unresolved */
 /* eslint-disable global-require */
 const tailwindcss = require('tailwindcss');
 const purgecss = require('@fullhuman/postcss-purgecss')({

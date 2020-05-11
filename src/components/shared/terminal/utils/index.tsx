@@ -1,8 +1,5 @@
 import React, { Fragment } from 'react';
-import {
-  ResultType,
-  TerminalResultProps,
-} from 'components/shared/terminal/types';
+import { ResultType, TerminalResultProps } from 'components/shared/terminal/types';
 import * as COMMANDS from 'constants/commands';
 import { PropsFromRedux } from '..';
 
@@ -47,10 +44,10 @@ export const resultFactory = (command: string, props: PropsFromRedux) => {
         result: [
           'Available FLAGS for show:',
           '--languages',
-          '--bio (pending)',
-          '--employment (pending)',
-          '--projects (pending)',
-          '--tools (pending)',
+          '--bio',
+          '--employment',
+          '--tools',
+          '--projects ( pending )',
         ],
       });
       return newResult;
@@ -68,6 +65,30 @@ export const resultFactory = (command: string, props: PropsFromRedux) => {
         command,
         type: ResultType.DEFAULT,
         result: props.languages.data.map((lang) => lang.name),
+      });
+      return newResult;
+    }
+    case COMMANDS.SHOW_TOOLS: {
+      const newResult = createResult({
+        command,
+        type: ResultType.DEFAULT,
+        result: props.tools.data.map((tool) => tool.name),
+      });
+      return newResult;
+    }
+    case COMMANDS.SHOW_EMPLOYMENT: {
+      const newResult = createResult({
+        command,
+        type: ResultType.DEFAULT,
+        result: props.employment.data.map((record) => record.company),
+      });
+      return newResult;
+    }
+    case COMMANDS.SHOW_BIO: {
+      const newResult = createResult({
+        command,
+        type: ResultType.DEFAULT,
+        result: Object.keys(props.bio.data).map((key) => `${key.toUpperCase()}:   ${(props.bio.data as any)[key]}`),
       });
       return newResult;
     }
