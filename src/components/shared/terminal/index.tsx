@@ -1,34 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { connect, ConnectedProps } from 'react-redux';
-import { RootState } from 'store/reducers';
-import { fetchLanguagesRequest } from 'store/actions/languages';
-import { fetchEmploymentRequest } from 'store/actions/employment';
-import { fetchBioRequest } from 'store/actions/bio';
-import { fetchToolsRequest } from 'store/actions/tools';
-import { TerminalResultProps } from './types';
+import { TerminalResultProps, TerminalProps } from './types';
 import * as UTILS from './utils';
 
-// TODO: Implement other Sagas for other Fetches
-
-const mapStateToProps = (state: RootState) => ({
-  languages: state.languages,
-  tools: state.tools,
-  employment: state.employment,
-  bio: state.bio,
-});
-
-const mapDispatchToProps = {
-  fetchLanguagesRequest,
-  fetchBioRequest,
-  fetchEmploymentRequest,
-  fetchToolsRequest,
-};
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-
-export type PropsFromRedux = ConnectedProps<typeof connector>;
-
-const Terminal = (props: PropsFromRedux) => {
+const Terminal = ({ data }: TerminalProps) => {
   let focusedInput: HTMLInputElement = null;
   let scrollableContainer: HTMLDivElement = null;
 
@@ -43,10 +17,10 @@ const Terminal = (props: PropsFromRedux) => {
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (!UTILS.resultFactory(command.trim(), props)) {
-      setResults([]);
+    if (!UTILS.resultFactory(command.trim(), data)) {
+      setResults([]); // COMMAND CLEAR RETURNS A NULL VALUE
     } else {
-      setResults([...results, UTILS.resultFactory(command.trim(), props)]);
+      setResults([...results, UTILS.resultFactory(command.trim(), data)]);
     }
 
     setCommand(''); // clear command input
@@ -56,13 +30,6 @@ const Terminal = (props: PropsFromRedux) => {
     const { value } = event.currentTarget;
     setCommand(value);
   };
-
-  useEffect(() => {
-    props.fetchLanguagesRequest();
-    props.fetchBioRequest();
-    props.fetchEmploymentRequest();
-    props.fetchToolsRequest();
-  }, []); // runs once
 
   useEffect(() => { // runs everytime the component renders
     UTILS.setFocusToInput(focusedInput);
@@ -96,4 +63,4 @@ const Terminal = (props: PropsFromRedux) => {
   );
 };
 
-export default connector(Terminal);
+export default Terminal;

@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
-import { ResultType, TerminalResultProps } from 'components/shared/terminal/types';
-import * as COMMANDS from 'constants/commands';
-import { PropsFromRedux } from '..';
+import { ResultType, TerminalResultProps, TerminalData } from '../types';
 
 export const scrollContainerToBottom = (
   container: HTMLDivElement,
@@ -35,73 +33,46 @@ export const jsxResultFactory = (
   </Fragment>
 ));
 
-export const resultFactory = (command: string, props: PropsFromRedux) => {
+const breakObject = (data: TerminalData): string[] => Object.keys(data.result).map((key) => `${key}: ${(data.result as any)[key]}`);
+
+export const resultFactory = (command: string, data: TerminalData[]) => {
   switch (command) {
-    case COMMANDS.SHOW: {
+    case 'help': { // show all available commands
       const newResult = createResult({
         command,
         type: ResultType.DEFAULT,
         result: [
-          'Available FLAGS for show:',
-          '--languages',
-          '--bio',
-          '--employment',
-          '--tools',
-          '--projects ( pending )',
+          'Available commands: ',
+          'clear',
+          'help',
+          ...(data.map((i) => i.command)),
         ],
       });
       return newResult;
     }
-    case COMMANDS.HELP: {
-      const newResult = createResult({
-        command,
-        type: ResultType.DEFAULT,
-        result: ['Available commands: ', 'show, clear, help'],
-      });
-      return newResult;
-    }
-    case COMMANDS.SHOW_LANGUAGES: {
-      const newResult = createResult({
-        command,
-        type: ResultType.DEFAULT,
-        result: props.languages.data.map((lang) => lang.name),
-      });
-      return newResult;
-    }
-    case COMMANDS.SHOW_TOOLS: {
-      const newResult = createResult({
-        command,
-        type: ResultType.DEFAULT,
-        result: props.tools.data.map((tool) => tool.name),
-      });
-      return newResult;
-    }
-    case COMMANDS.SHOW_EMPLOYMENT: {
-      const newResult = createResult({
-        command,
-        type: ResultType.DEFAULT,
-        result: props.employment.data.map((record) => record.company),
-      });
-      return newResult;
-    }
-    case COMMANDS.SHOW_BIO: {
-      const newResult = createResult({
-        command,
-        type: ResultType.DEFAULT,
-        result: Object.keys(props.bio.data).map((key) => `${key.toUpperCase()}:   ${(props.bio.data as any)[key]}`),
-      });
-      return newResult;
-    }
-    case COMMANDS.CLEAR: {
-      return null;
-    }
-    default: {
+    case 'clear': { return null; } // clear results
+    case '': { // empty command handler
       const newResult = createResult({
         command,
         type: ResultType.ERROR,
         result: [`Unknown command "${command}" found.`],
       });
       return newResult;
+    }
+    default: {
+      const commandResult = data.find((item) => item.command === command);
+      if (commandResult) {
+        return createResult({
+          command: commandResult.command,
+          type: ResultType.DEFAULT,
+          result: commandResult.type === 'object' ? breakObject(commandResult) : commandResult.result,
+        });
+      }
+      return createResult({
+        command,
+        type: ResultType.ERROR,
+        result: [`Unknown command "${command}" found.`],
+      });
     }
   }
 };
