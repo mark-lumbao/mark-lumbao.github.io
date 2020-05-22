@@ -4,3 +4,20 @@
 /* purgecss end ignore */
 
 @tailwind utilities;
+
+
+.theme-dark {
+  --main-primary: #002400;
+  --main-secondary: #6b9b70;
+  --main-primaryCopy: #ffff;
+}
+
+.theme-light {
+  --main-primary: #6b9b70;
+  --main-secondary: #9acc9f;
+  --main-primaryCopy: #000000;
+}
+
+.invert {
+  filter: invert();
+}

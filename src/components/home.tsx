@@ -32,12 +32,20 @@ export type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const Home = (props: PropsFromRedux) => {
   const [terminalProp, setTerminalProp] = useState<TerminalData[]>([]);
+  const initialThemeValue = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'theme-light';
+  const [theme, setTheme] = useState(initialThemeValue);
+
+  const toggleTheme = () => {
+    localStorage.setItem('theme', theme === 'theme-light' ? 'theme-dark' : 'theme-light');
+    setTheme(theme === 'theme-light' ? 'theme-dark' : 'theme-light');
+  };
   useEffect(() => {
     props.fetchLanguagesRequest();
     props.fetchBioRequest();
     props.fetchEmploymentRequest();
     props.fetchToolsRequest();
   }, []); // runs once
+
   useEffect(() => {
     const {
       languages, bio, employment, tools,
@@ -62,12 +70,13 @@ const Home = (props: PropsFromRedux) => {
       },
     ]);
   }, [props]);
+
   return (
-    <div className="w-screen h-screen flex flex-col bg-teal-800">
-      <MainNavigation />
-      <div className="flex items-center container mx-auto flex-1 py-4 sm:px-2 md:px-2">
+    <div className={`${theme} transition duration-300 w-screen h-screen flex flex-col bg-primary`}>
+      <MainNavigation theme={theme} toggleTheme={toggleTheme} />
+      <main className="flex items-center container mx-auto flex-1 py-4 sm:px-2 md:px-2">
         <Terminal data={terminalProp} />
-      </div>
+      </main>
       <Footer />
     </div>
   );
