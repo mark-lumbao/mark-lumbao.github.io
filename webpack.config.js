@@ -76,6 +76,9 @@ module.exports = {
       template: 'public/index.html',
       minify: true,
       favicon: 'src/assets/images/terminal.png',
+      meta: {
+        'theme-color': '#002400',
+      },
     }),
   ],
 };
