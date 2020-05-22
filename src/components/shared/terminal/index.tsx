@@ -39,6 +39,7 @@ const Terminal = ({ data }: TerminalProps) => {
   return (
     <div
       role="button"
+      aria-label="Website Terminal"
       tabIndex={0}
       onClick={handleFocusClick}
       onKeyDown={() => {}}
@@ -50,7 +51,8 @@ const Terminal = ({ data }: TerminalProps) => {
       <form onSubmit={handleFormSubmit} autoComplete="off" className="flex flex-row">
         <span className="text-yellow">$ &nbsp;</span>
         <input
-          className="flex-1 outline-none text-white bg-terminalGray"
+          id="terminal-input"
+          className="flex-1 outline-none text-terminalText bg-terminalGray"
           value={command}
           onChange={handleCommandInputChange}
           type="text"

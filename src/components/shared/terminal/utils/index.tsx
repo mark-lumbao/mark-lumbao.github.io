@@ -27,7 +27,7 @@ export const jsxResultFactory = (
 ) => results.map((result: TerminalResultProps, index: number) => (
   <Fragment key={index}>
     <span className="text-yellow">$ &nbsp;</span>
-    <span className="text-white">{result.command.length < 1 ? 'EMPTY' : result.command}</span>
+    <span className="text-terminalText">{result.command.length < 1 ? 'EMPTY' : result.command}</span>
     {/* eslint-disable-next-line prefer-template */}
     { result.result.map((text: any) => <p className={resolveClass(result.type) + ' ml-4'}>{text}</p>) }
   </Fragment>

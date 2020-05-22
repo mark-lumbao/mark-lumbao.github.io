@@ -11,9 +11,6 @@ module.exports = {
     tableLayout: false,
     tracking: false,
     translate: false,
-    transitionProperty: false,
-    transitionDuration: false,
-    transitionTimingFunction: false,
     fill: false,
     float: false,
     stroke: false,
@@ -32,15 +29,14 @@ module.exports = {
   },
   theme: {
     colors: {
-      white: '#ffffff',
+      primary: 'var(--main-primary)',
+      secondary: 'var(--main-secondary)',
+      primaryCopy: 'var(--main-primaryCopy)',
       terminalGray: '#2D3748',
       terminalGreen: '#68D391',
+      terminalText: '#ffff',
       red: '#E53E3E',
       yellow: '#F6E05E',
-      teal: {
-        800: '#285E61',
-        400: '#4FD1C5',
-      },
     },
     screens: {
       sm: { max: '639px' },
@@ -50,7 +46,7 @@ module.exports = {
       xl: '1280px',
     },
     fontFamily: {
-      heading: ['Courier Prime'],
+      heading: ['Bitter'],
     },
   },
   variants: {},
