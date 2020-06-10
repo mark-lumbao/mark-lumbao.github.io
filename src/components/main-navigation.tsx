@@ -19,7 +19,7 @@ const MainNavigation = ({ toggleTheme, theme }: NavProps) => (
         <span className="font-bold text-base text-primaryCopy">M.A.L v0.1</span>
       </div>
       <div className="flex flex-1 justify-end">
-        <button aria-label="Theme Switcher" type="button" onClick={() => { toggleTheme(); }}>
+        <button className="focus:outline-none" aria-label="Theme Switcher" type="button" onClick={() => { toggleTheme(); }}>
           <img alt="github" src={isDark(theme) ? moon : sun} className={`${isDark(theme) ? null : 'invert'} mr-2 w-8 xsm:w-7`} />
         </button>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/doldol999">
