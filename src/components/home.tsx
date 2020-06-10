@@ -62,7 +62,7 @@ const Home = (props: PropsFromRedux) => {
   }, [props]);
 
   return (
-    <main className="flex items-center container mx-auto flex-1 py-4 sm:px-2 md:px-2">
+    <main className="flex items-center container mx-auto flex-1 md:px-2">
       <Terminal className="terminal h-full w-full overflow-y-scroll content-start p-5 rounded bg-terminalBlack" data={terminalProp} />
     </main>
   );
