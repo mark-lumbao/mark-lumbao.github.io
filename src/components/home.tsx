@@ -1,4 +1,4 @@
-import React, { lazy, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { RootState } from 'store/reducers';
 import { fetchLanguagesRequest } from 'store/actions/languages';
@@ -8,9 +8,6 @@ import { fetchToolsRequest } from 'store/actions/tools';
 import Terminal from 'components/shared/terminal';
 import { TerminalData } from 'components/shared/terminal/types';
 import * as COMMANDS from 'constants/commands';
-
-const MainNavigation = lazy(() => import('components/main-navigation'));
-const Footer = lazy(() => import('components/footer'));
 
 const mapStateToProps = (state: RootState) => ({
   languages: state.languages,
@@ -32,13 +29,6 @@ export type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const Home = (props: PropsFromRedux) => {
   const [terminalProp, setTerminalProp] = useState<TerminalData[]>([]);
-  const initialThemeValue = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'theme-light';
-  const [theme, setTheme] = useState(initialThemeValue);
-
-  const toggleTheme = () => {
-    localStorage.setItem('theme', theme === 'theme-light' ? 'theme-dark' : 'theme-light');
-    setTheme(theme === 'theme-light' ? 'theme-dark' : 'theme-light');
-  };
   useEffect(() => {
     props.fetchLanguagesRequest();
     props.fetchBioRequest();
@@ -72,13 +62,9 @@ const Home = (props: PropsFromRedux) => {
   }, [props]);
 
   return (
-    <div className={`${theme} transition duration-300 w-screen h-screen flex flex-col bg-primary`}>
-      <MainNavigation theme={theme} toggleTheme={toggleTheme} />
-      <main className="flex items-center container mx-auto flex-1 py-4 sm:px-2 md:px-2">
-        <Terminal data={terminalProp} />
-      </main>
-      <Footer />
-    </div>
+    <main className="flex items-center container mx-auto flex-1 py-4 sm:px-2 md:px-2">
+      <Terminal className="terminal h-full w-full overflow-y-scroll content-start p-5 rounded bg-terminalBlack" data={terminalProp} />
+    </main>
   );
 };
 

@@ -1,4 +1,6 @@
-export interface TerminalResultProps {
+import { HTMLAttributes } from 'react';
+
+export interface TerminalResultProps extends HTMLAttributes<any> {
   command: string;
   result: string[];
   type: ResultType;
@@ -16,6 +18,6 @@ export interface TerminalData {
   type?: 'string-list' | 'object'
 }
 
-export interface TerminalProps {
+export interface TerminalProps extends HTMLAttributes<any> {
   data: TerminalData[];
 }

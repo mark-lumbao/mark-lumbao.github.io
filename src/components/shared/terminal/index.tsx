@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
 import { TerminalResultProps, TerminalProps } from './types';
 import * as UTILS from './utils';
 
-const Terminal = ({ data }: TerminalProps) => {
+const Terminal = ({ data, ...others }: TerminalProps) => {
   let focusedInput: HTMLInputElement = null;
   let scrollableContainer: HTMLDivElement = null;
 
@@ -38,13 +39,13 @@ const Terminal = ({ data }: TerminalProps) => {
 
   return (
     <div
+      {...others}
       role="button"
       aria-label="Website Terminal"
       tabIndex={0}
       onClick={handleFocusClick}
       onKeyDown={() => {}}
       style={{ maxHeight: '75vh' }}
-      className="h-full w-full overflow-y-scroll content-start p-5 rounded bg-terminalGray"
       ref={(div) => { scrollableContainer = div; }}
     >
       {UTILS.jsxResultFactory(results)}
@@ -52,7 +53,7 @@ const Terminal = ({ data }: TerminalProps) => {
         <span className="text-yellow">$ &nbsp;</span>
         <input
           id="terminal-input"
-          className="flex-1 outline-none text-terminalText bg-terminalGray"
+          className="flex-1 outline-none text-terminalText bg-terminalBlack"
           value={command}
           onChange={handleCommandInputChange}
           type="text"
