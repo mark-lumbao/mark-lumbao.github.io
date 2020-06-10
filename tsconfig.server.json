@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "server",
+    "outDir": "dist-server",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": false,
+  },
+  "files": ["server/index.ts"],
+}
