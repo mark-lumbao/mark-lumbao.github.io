@@ -14,10 +14,21 @@
 
 .theme-light {
   --main-primary: #6b9b70;
-  --main-secondary: #9acc9f;
+  --main-secondary: rgb(181, 240, 186);
   --main-primaryCopy: #000000;
 }
 
 .invert {
   filter: invert();
+}
+
+
+/* overrides to hide terminal scroll display */
+.terminal::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+.terminal {
+  -ms-overflow-style: none;
 }

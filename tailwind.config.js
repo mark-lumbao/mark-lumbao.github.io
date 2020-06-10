@@ -32,7 +32,7 @@ module.exports = {
       primary: 'var(--main-primary)',
       secondary: 'var(--main-secondary)',
       primaryCopy: 'var(--main-primaryCopy)',
-      terminalGray: '#2D3748',
+      terminalBlack: '#111',
       terminalGreen: '#68D391',
       terminalText: '#ffff',
       red: '#E53E3E',
