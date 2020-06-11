@@ -15,7 +15,7 @@ const isDark = (theme: string) => theme === 'theme-dark';
 
 const MainNavigation = ({ toggleTheme, theme }: NavProps) => (
   <nav className="border-dashed border-b-2 border-secondary p-3">
-    <div className="mx-auto flex items-center">
+    <div className="container mx-auto flex items-center">
       <Link to={ROUTES.HOME} className="flex flex-1 items-center flex-initial">
         <img alt="logo" src={logo} className="w-8 mr-2" />
         <span className="font-bold text-base text-primaryCopy">

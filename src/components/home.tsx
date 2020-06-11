@@ -66,12 +66,11 @@ const Home = (props: PropsFromRedux) => {
    * @TODO
    * Revisit terminal and terminal container flexibility styles
    */
-
   return (
     <main
       ref={scrollableContainer}
       id="terminalContainer"
-      className="flex w-full overflow-y-scroll mx-auto bg-terminalBlack flex-1 p-5"
+      className="flex container overflow-y-scroll mx-auto bg-terminalBlack flex-1 p-5 sm:m-0 my-5"
     >
       <Terminal
         className="terminal h-full w-full content-start rounded pb-5"
