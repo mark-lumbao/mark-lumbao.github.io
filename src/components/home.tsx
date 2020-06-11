@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { RootState } from 'store/reducers';
 import { fetchLanguagesRequest } from 'store/actions/languages';
@@ -28,6 +28,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 export type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const Home = (props: PropsFromRedux) => {
+  const scrollableContainer = useRef(null);
   const [terminalProp, setTerminalProp] = useState<TerminalData[]>([]);
   useEffect(() => {
     props.fetchLanguagesRequest();
@@ -61,9 +62,22 @@ const Home = (props: PropsFromRedux) => {
     ]);
   }, [props]);
 
+  /**
+   * @TODO
+   * Revisit terminal and terminal container flexibility styles
+   */
+
   return (
-    <main className="flex items-center container mx-auto flex-1 md:px-2">
-      <Terminal className="terminal h-full w-full overflow-y-scroll content-start p-5 rounded bg-terminalBlack" data={terminalProp} />
+    <main
+      ref={scrollableContainer}
+      id="terminalContainer"
+      className="flex w-full overflow-y-scroll mx-auto bg-terminalBlack flex-1 p-5"
+    >
+      <Terminal
+        className="terminal h-full w-full content-start rounded pb-5"
+        data={terminalProp}
+        scrollableContainer={scrollableContainer.current}
+      />
     </main>
   );
 };

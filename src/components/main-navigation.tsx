@@ -15,10 +15,12 @@ const isDark = (theme: string) => theme === 'theme-dark';
 
 const MainNavigation = ({ toggleTheme, theme }: NavProps) => (
   <nav className="border-dashed border-b-2 border-secondary p-3">
-    <div className="container mx-auto flex items-center">
+    <div className="mx-auto flex items-center">
       <Link to={ROUTES.HOME} className="flex flex-1 items-center flex-initial">
         <img alt="logo" src={logo} className="w-8 mr-2" />
-        <span className="font-bold text-base text-primaryCopy">M.A.L v0.1</span>
+        <span className="font-bold text-base text-primaryCopy">
+          &#123; m-a-l &#125; v0.5
+        </span>
       </Link>
       <div className="flex flex-1 justify-end">
         <button className="focus:outline-none" aria-label="Theme Switcher" type="button" onClick={() => { toggleTheme(); }}>

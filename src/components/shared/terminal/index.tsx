@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { TerminalResultProps, TerminalProps } from './types';
 import * as UTILS from './utils';
 
-const Terminal = ({ data, ...others }: TerminalProps) => {
+const Terminal = ({ data, scrollableContainer, ...others }: TerminalProps) => {
   let focusedInput: HTMLInputElement = null;
-  let scrollableContainer: HTMLDivElement = null;
 
   const [command, setCommand] = useState('');
   const [results, setResults] = useState<TerminalResultProps[]>([]);
@@ -34,7 +33,7 @@ const Terminal = ({ data, ...others }: TerminalProps) => {
 
   useEffect(() => { // runs everytime the component renders
     UTILS.setFocusToInput(focusedInput);
-    UTILS.scrollContainerToBottom(scrollableContainer);
+    if (scrollableContainer) UTILS.scrollContainerToBottom(scrollableContainer);
   });
 
   return (
@@ -45,11 +44,14 @@ const Terminal = ({ data, ...others }: TerminalProps) => {
       tabIndex={0}
       onClick={handleFocusClick}
       onKeyDown={() => {}}
-      style={{ maxHeight: '75vh' }}
-      ref={(div) => { scrollableContainer = div; }}
+      // style={{ maxHeight: '75vh' }}
     >
       {UTILS.jsxResultFactory(results)}
-      <form onSubmit={handleFormSubmit} autoComplete="off" className="flex flex-row">
+      {/* @NOTE
+        pb-5 class here is a temporary fix while I figure out the
+        flexibility of terminal's container
+      */}
+      <form onSubmit={handleFormSubmit} autoComplete="off" className="flex flex-row pb-5">
         <span className="text-yellow">$ &nbsp;</span>
         <input
           id="terminal-input"

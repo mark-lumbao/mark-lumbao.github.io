@@ -20,4 +20,5 @@ export interface TerminalData {
 
 export interface TerminalProps extends HTMLAttributes<any> {
   data: TerminalData[];
+  scrollableContainer?: HTMLDivElement;
 }
