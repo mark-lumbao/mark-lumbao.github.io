@@ -24,11 +24,11 @@
 
 
 /* overrides to hide terminal scroll display */
-.terminal::-webkit-scrollbar {
+#terminalContainer::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */
 }
 
-.terminal {
+#terminalContainer {
   -ms-overflow-style: none;
 }
