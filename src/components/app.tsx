@@ -23,7 +23,7 @@ const App = () => {
   };
 
   return (
-    <div className={`${theme} transition duration-300 w-screen h-screen flex flex-col bg-primary`}>
+    <div className={`${theme} transition duration-300 w-screen absolute top-0 bottom-0 flex flex-col bg-primary`}>
       <Suspense fallback={<CenteredMessage message="Loading Components ..." />}>
         <Router>
           <MainNavigation theme={theme} toggleTheme={toggleTheme} />

@@ -9,7 +9,6 @@ const port = process.env.PORT || 3333;
 
 app.use(
   expressStaticGzip(publicDirectory, {
-    enableBrotli: true, // only if you have brotli files too
   }),
 );
 
