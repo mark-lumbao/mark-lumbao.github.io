@@ -42,7 +42,7 @@ export const jsxResultFactory = (
         onKeyDown={() => {}}
         role="presentation"
       >
-        {`${result.type === ResultType.LINK && '(link)'} ${value}`}
+        {`${result.type === ResultType.LINK ? '(link) ' : ' '}${value}`}
       </p>
     )) }
   </Fragment>
