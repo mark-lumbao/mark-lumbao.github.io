@@ -36,7 +36,7 @@
     "relatedProjects": []
   },
   {
-    "name": "React",
+    "name": "React ( JS | TS )",
     "maturityLevel": 6,
     "languageUsed": "JS, TS, CSS",
     "relatedProjects": []
@@ -67,6 +67,36 @@
   },
   {
     "name": "NodeJS",
+    "maturityLevel": 6,
+    "languageUsed": "JS",
+    "relatedProjects": []
+  },
+  {
+    "name": "ExpressJS",
+    "maturityLevel": 6,
+    "languageUsed": "JS",
+    "relatedProjects": []
+  },
+  {
+    "name": "FeathersJS",
+    "maturityLevel": 6,
+    "languageUsed": "JS, TS",
+    "relatedProjects": []
+  },
+  {
+    "name": "Redux",
+    "maturityLevel": 6,
+    "languageUsed": "JS",
+    "relatedProjects": []
+  },
+  {
+    "name": "Firebase",
+    "maturityLevel": 6,
+    "languageUsed": "JS",
+    "relatedProjects": []
+  },
+  {
+    "name": "MongoDB, Mongoose",
     "maturityLevel": 6,
     "languageUsed": "JS",
     "relatedProjects": []

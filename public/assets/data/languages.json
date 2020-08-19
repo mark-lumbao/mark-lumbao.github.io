@@ -1,16 +1,11 @@
 [
   {
-    "name": "C#",
-    "maturityLevel": 5,
-    "relatedProjects": []
-  },
-  {
     "name": "Java",
     "maturityLevel": 5,
     "relatedProjects": []
   },
   {
-    "name": "PHP",
+    "name": "Rust",
     "maturityLevel": 5,
     "relatedProjects": []
   },
@@ -30,7 +25,7 @@
     "relatedProjects": []
   },
   {
-    "name": "HTML5",
+    "name": "HTML",
     "maturityLevel": 9,
     "relatedProjects": []
   },
