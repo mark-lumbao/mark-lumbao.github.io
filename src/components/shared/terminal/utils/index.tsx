@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { SHOW_PROJECTS } from 'constants/commands';
 import { ResultType, TerminalResultProps, TerminalData } from '../types';
 
 export const scrollContainerToBottom = (
@@ -28,8 +29,22 @@ export const jsxResultFactory = (
   <Fragment key={index}>
     <span className="text-yellow">$ &nbsp;</span>
     <span className="text-terminalText">{result.command.length < 1 ? 'EMPTY' : result.command}</span>
-    {/* eslint-disable-next-line prefer-template */}
-    { result.result.map((text: any) => <p className={resolveClass(result.type) + ' ml-4'}>{text}</p>) }
+    { result.result.map(({ value, link }, key) => (
+      <p
+        key={key}
+        className={`${resolveClass(result.type)} ml-4`}
+        style={{ cursor: result.type === ResultType.LINK && 'pointer' }}
+        onClick={() => {
+          if (result.type === ResultType.LINK) {
+            window.open(link);
+          }
+        }}
+        onKeyDown={() => {}}
+        role="presentation"
+      >
+        {`${result.type === ResultType.LINK && '(link)'} ${value}`}
+      </p>
+    )) }
   </Fragment>
 ));
 
@@ -42,10 +57,10 @@ export const resultFactory = (command: string, data: TerminalData[]) => {
         command,
         type: ResultType.DEFAULT,
         result: [
-          'Available commands: ',
-          'clear',
-          'help',
-          ...(data.map((i) => i.command)),
+          { value: 'Available commands: ' },
+          { value: 'clear' },
+          { value: 'help' },
+          ...(data.map((i) => ({ value: i.command }))),
         ],
       });
       return newResult;
@@ -55,7 +70,7 @@ export const resultFactory = (command: string, data: TerminalData[]) => {
       const newResult = createResult({
         command,
         type: ResultType.ERROR,
-        result: [`Unknown command "${command}" found.`],
+        result: [{ value: `Unknown command "${command}" found.` }],
       });
       return newResult;
     }
@@ -64,14 +79,21 @@ export const resultFactory = (command: string, data: TerminalData[]) => {
       if (commandResult) {
         return createResult({
           command: commandResult.command,
-          type: ResultType.DEFAULT,
-          result: commandResult.type === 'object' ? breakObject(commandResult) : commandResult.result,
+          type: command === SHOW_PROJECTS ? ResultType.LINK : ResultType.DEFAULT,
+          result: commandResult.type === 'object'
+            ? breakObject(commandResult).map((item) => ({ value: item }))
+            : commandResult.result.map((item: any) => {
+              if (command === SHOW_PROJECTS) {
+                return ({ value: item.name, link: item.link });
+              }
+              return ({ value: item });
+            }),
         });
       }
       return createResult({
         command,
         type: ResultType.ERROR,
-        result: [`Unknown command "${command}" found.`],
+        result: [{ value: `Unknown command "${command}" found.` }],
       });
     }
   }
