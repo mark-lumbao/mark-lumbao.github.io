@@ -70,10 +70,10 @@ const Home = (props: PropsFromRedux) => {
     <main
       ref={scrollableContainer}
       id="terminalContainer"
-      className="flex container overflow-y-scroll mx-auto bg-terminalBlack flex-1 p-5 sm:m-0 my-5"
+      className="flex container sm:rounded-none rounded overflow-y-scroll mx-auto bg-terminalBlack flex-1 p-5 sm:m-0 my-5"
     >
       <Terminal
-        className="terminal h-full w-full content-start rounded pb-5"
+        className="terminal h-full w-full content-start pb-5"
         data={terminalProp}
         scrollableContainer={scrollableContainer.current}
       />
