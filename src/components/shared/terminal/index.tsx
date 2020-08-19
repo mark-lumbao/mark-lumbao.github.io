@@ -39,9 +39,8 @@ const Terminal = ({ data, scrollableContainer, ...others }: TerminalProps) => {
   return (
     <div
       {...others}
-      role="button"
+      role="presentation"
       aria-label="Website Terminal"
-      tabIndex={0}
       onClick={handleFocusClick}
       onKeyDown={() => {}}
       // style={{ maxHeight: '75vh' }}
