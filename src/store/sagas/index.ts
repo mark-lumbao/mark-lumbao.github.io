@@ -3,6 +3,7 @@ import languagesSagas from './languages';
 import bioSagas from './bio';
 import employmentSagas from './employment';
 import toolsSagas from './tools';
+import projectsSagas from './projects';
 
 export default function* () {
   yield all([
@@ -10,5 +11,6 @@ export default function* () {
     bioSagas(),
     employmentSagas(),
     toolsSagas(),
+    projectsSagas(),
   ]);
 }

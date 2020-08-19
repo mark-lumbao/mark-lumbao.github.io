@@ -5,6 +5,7 @@ import { fetchLanguagesRequest } from 'store/actions/languages';
 import { fetchEmploymentRequest } from 'store/actions/employment';
 import { fetchBioRequest } from 'store/actions/bio';
 import { fetchToolsRequest } from 'store/actions/tools';
+import { fetchProjectsRequest } from 'store/actions/projects';
 import Terminal from 'components/shared/terminal';
 import { TerminalData } from 'components/shared/terminal/types';
 import * as COMMANDS from 'constants/commands';
@@ -14,6 +15,7 @@ const mapStateToProps = (state: RootState) => ({
   tools: state.tools,
   employment: state.employment,
   bio: state.bio,
+  projects: state.projects,
 });
 
 const mapDispatchToProps = {
@@ -21,6 +23,7 @@ const mapDispatchToProps = {
   fetchBioRequest,
   fetchEmploymentRequest,
   fetchToolsRequest,
+  fetchProjectsRequest,
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -35,11 +38,12 @@ const Home = (props: PropsFromRedux) => {
     props.fetchBioRequest();
     props.fetchEmploymentRequest();
     props.fetchToolsRequest();
+    props.fetchProjectsRequest();
   }, []); // runs once
 
   useEffect(() => {
     const {
-      languages, bio, employment, tools,
+      languages, bio, employment, tools, projects,
     } = props;
     setTerminalProp([
       {
@@ -53,6 +57,10 @@ const Home = (props: PropsFromRedux) => {
       {
         command: COMMANDS.SHOW_TOOLS,
         result: tools.data.map((item) => item.name),
+      },
+      {
+        command: COMMANDS.SHOW_PROJECTS,
+        result: projects.data.map((item) => ({ name: item.name, link: item.link })),
       },
       {
         command: COMMANDS.SHOW_BIO,
