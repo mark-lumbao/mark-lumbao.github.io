@@ -18,7 +18,7 @@ const TerminalResultComponent = (
         <p
           key={key}
           className={`${resolveClass(type)} ml-4`}
-          style={{ cursor: hasLink && 'pointer' }}
+          style={{ cursor: hasLink && 'pointer', width: 'max-content' }}
           onClick={() => hasLink && window.open(link)}
           onKeyDown={() => {}}
           role="presentation"
