@@ -1,10 +1,16 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { SHOW_PROJECTS } from 'constants/commands';
+import * as UTILS from 'utils';
 import { ResultType, TerminalResultProps, TerminalData } from '../types';
+import TerminalResult from '../partials/result';
 
 export const scrollContainerToBottom = (
   container: HTMLDivElement,
 ) => { container.scrollTo(0, container.scrollHeight); };
+
+export const createResult = (
+  props: TerminalResultProps,
+): TerminalResultProps => props;
 
 export const setFocusToInput = (input: HTMLInputElement) => { input.focus(); };
 
@@ -19,36 +25,11 @@ export const resolveClass = (res: ResultType): string => {
   }
 };
 
-export const createResult = (
-  props: TerminalResultProps,
-): TerminalResultProps => props;
-
 export const jsxResultFactory = (
   results: TerminalResultProps[],
 ) => results.map((result: TerminalResultProps, index: number) => (
-  <Fragment key={index}>
-    <span className="text-yellow">$ &nbsp;</span>
-    <span className="text-terminalText">{result.command.length < 1 ? 'EMPTY' : result.command}</span>
-    { result.result.map(({ value, link }, key) => (
-      <p
-        key={key}
-        className={`${resolveClass(result.type)} ml-4`}
-        style={{ cursor: result.type === ResultType.LINK && 'pointer' }}
-        onClick={() => {
-          if (result.type === ResultType.LINK) {
-            window.open(link);
-          }
-        }}
-        onKeyDown={() => {}}
-        role="presentation"
-      >
-        {`${result.type === ResultType.LINK ? '(link) ' : ' '}${value}`}
-      </p>
-    )) }
-  </Fragment>
+  <TerminalResult result={result} key={index} />
 ));
-
-const breakObject = (data: TerminalData): string[] => Object.keys(data.result).map((key) => `${key}: ${(data.result as any)[key]}`);
 
 export const resultFactory = (command: string, data: TerminalData[]) => {
   switch (command) {
@@ -81,7 +62,7 @@ export const resultFactory = (command: string, data: TerminalData[]) => {
           command: commandResult.command,
           type: command === SHOW_PROJECTS ? ResultType.LINK : ResultType.DEFAULT,
           result: commandResult.type === 'object'
-            ? breakObject(commandResult).map((item) => ({ value: item }))
+            ? UTILS.breakObject(commandResult.result).map((item) => ({ value: item }))
             : commandResult.result.map((item: any) => {
               if (command === SHOW_PROJECTS) {
                 return ({ value: item.name, link: item.link });
