@@ -41,9 +41,8 @@ module.exports = {
     screens: {
       sm: { max: '639px' },
       xsm: { max: '320px' },
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
+      md: { max: '1024px' },
+      lg: '1280px',
     },
     fontFamily: {
       heading: ['Bitter'],
