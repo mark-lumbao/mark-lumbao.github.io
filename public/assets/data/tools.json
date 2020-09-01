@@ -84,9 +84,21 @@
     "relatedProjects": []
   },
   {
-    "name": "MongoDB, Mongoose",
+    "name": "MongoDB",
     "maturityLevel": 6,
     "languageUsed": "JS",
+    "relatedProjects": []
+  },
+  {
+    "name": "Cargo",
+    "maturityLevel": 3,
+    "languageUsed": "Rust",
+    "relatedProjects": []
+  },
+  {
+    "name": "CPanel",
+    "maturityLevel": 6,
+    "languageUsed": "none",
     "relatedProjects": []
   }
 ]
