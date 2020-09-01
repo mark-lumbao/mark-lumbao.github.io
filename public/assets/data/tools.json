@@ -6,27 +6,9 @@
     "relatedProjects": []
   },
   {
-    "name": "Visual Studio",
-    "maturityLevel": 6,
-    "languageUsed": "C#",
-    "relatedProjects": []
-  },
-  {
-    "name": "Unity 3D",
-    "maturityLevel": 6,
-    "languageUsed": "C#",
-    "relatedProjects": []
-  },
-  {
     "name": "Visual Studio Code",
     "maturityLevel": 8,
     "languageUsed": "PHP, JS, TS, HTML, CSS",
-    "relatedProjects": []
-  },
-  {
-    "name": "XCode",
-    "maturityLevel": 7,
-    "languageUsed": "Swift",
     "relatedProjects": []
   },
   {
@@ -91,6 +73,12 @@
   },
   {
     "name": "Firebase",
+    "maturityLevel": 6,
+    "languageUsed": "JS",
+    "relatedProjects": []
+  },
+  {
+    "name": "Heroku",
     "maturityLevel": 6,
     "languageUsed": "JS",
     "relatedProjects": []
