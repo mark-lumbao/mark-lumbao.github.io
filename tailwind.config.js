@@ -39,10 +39,10 @@ module.exports = {
       yellow: '#F6E05E',
     },
     screens: {
-      sm: { max: '639px' },
       xsm: { max: '320px' },
-      md: { max: '1024px' },
-      lg: '1280px',
+      sm: { max: '639px' },
+      md: { max: '1440px' },
+      lg: '1440px',
     },
     fontFamily: {
       heading: ['Bitter'],
