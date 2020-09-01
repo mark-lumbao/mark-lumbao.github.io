@@ -78,7 +78,7 @@ const Home = (props: PropsFromRedux) => {
     <main
       ref={scrollableContainer}
       id="terminalContainer"
-      className="flex container sm:rounded-none rounded overflow-y-scroll mx-auto bg-terminalBlack flex-1 p-5 md:m-0 md-0 my-5"
+      className="flex container sm:rounded-none rounded overflow-y-scroll bg-terminalBlack flex-1 p-5 mx-auto md:m-0 my-5"
     >
       <Terminal
         className="terminal h-full w-full content-start pb-5"
