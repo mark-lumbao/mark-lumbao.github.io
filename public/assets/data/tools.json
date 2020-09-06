@@ -18,7 +18,7 @@
     "relatedProjects": []
   },
   {
-    "name": "React ( JS | TS )",
+    "name": "React",
     "maturityLevel": 6,
     "languageUsed": "JS, TS, CSS",
     "relatedProjects": []
@@ -36,9 +36,9 @@
     "relatedProjects": []
   },
   {
-    "name": "TailwindCSS",
+    "name": "Tailwind CSS",
     "maturityLevel": 6,
-    "languageUsed": "HTML, CSS",
+    "languageUsed": "CSS",
     "relatedProjects": []
   },
   {
@@ -50,13 +50,13 @@
   {
     "name": "NodeJS",
     "maturityLevel": 6,
-    "languageUsed": "JS",
+    "languageUsed": "JS, ts",
     "relatedProjects": []
   },
   {
     "name": "ExpressJS",
     "maturityLevel": 6,
-    "languageUsed": "JS",
+    "languageUsed": "JS, ts",
     "relatedProjects": []
   },
   {
@@ -68,25 +68,24 @@
   {
     "name": "Redux",
     "maturityLevel": 6,
-    "languageUsed": "JS",
+    "languageUsed": "JS, ts",
     "relatedProjects": []
   },
   {
     "name": "Firebase",
     "maturityLevel": 6,
-    "languageUsed": "JS",
+    "languageUsed": "JS, ts",
     "relatedProjects": []
   },
   {
     "name": "Heroku",
     "maturityLevel": 6,
-    "languageUsed": "JS",
     "relatedProjects": []
   },
   {
-    "name": "MongoDB",
+    "name": "MongoDB, Mongoose",
     "maturityLevel": 6,
-    "languageUsed": "JS",
+    "languageUsed": "JS, TS",
     "relatedProjects": []
   },
   {
@@ -98,7 +97,11 @@
   {
     "name": "CPanel",
     "maturityLevel": 6,
-    "languageUsed": "none",
+    "relatedProjects": []
+  },
+  {
+    "name": "POSTMAN",
+    "maturityLevel": 8,
     "relatedProjects": []
   }
 ]
