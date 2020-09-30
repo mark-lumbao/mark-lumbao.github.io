@@ -3,18 +3,24 @@
     "name": "PCsian CRM App",
     "link": "https://pcsian-crm.herokuapp.com/",
     "language": "Typescript",
-    "toolsInvolved": []
+    "toolsInvolved": [ "React", "Firebase" ]
   },
   {
     "name": "CICT WVSU",
     "link": "https://cictwvsu.com/",
     "language": "Typescript",
-    "toolsInvolved": []
+    "toolsInvolved": [ "React" ]
   },
   {
     "name": "Extend Ops IFix App",
     "link": "https://extend-ifix-staging.herokuapp.com/",
     "language": "Javascript",
-    "toolsInvolved": []
+    "toolsInvolved": [ "React" ]
+  },
+  {
+    "name": "Extend Ops Careers App",
+    "link": "https://careers.xtendops.com",
+    "language": "Typescript",
+    "toolsInvolved": [ "React" ]
   }
 ]
