@@ -13,7 +13,7 @@
   },
   {
     "name": "Extend Ops IFix App",
-    "link": "https://extend-ifix-staging.herokuapp.com/",
+    "link": "https://extend-ifix.herokuapp.com/",
     "language": "Javascript",
     "toolsInvolved": [ "React" ]
   },
