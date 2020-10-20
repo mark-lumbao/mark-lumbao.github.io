@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import * as ROUTES from 'constants/routes';
 import logo from 'assets/images/terminal.png';
@@ -26,7 +26,7 @@ const MainNavigation = ({ toggleTheme, theme }: NavProps) => (
         <button className="focus:outline-none" aria-label="Theme Switcher" type="button" onClick={() => { toggleTheme(); }}>
           <img alt="github" src={isDark(theme) ? moon : sun} className={`${isDark(theme) ? null : 'invert'} mr-4 w-8 xsm:w-7`} />
         </button>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/doldol999">
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/mark-lumbao">
           <img alt="github" src={github} className={`${isDark(theme) ? null : 'invert'} mr-2 w-8 xsm:w-7`} />
         </a>
       </div>
