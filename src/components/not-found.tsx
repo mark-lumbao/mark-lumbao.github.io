@@ -1,10 +1,14 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import CenteredMessage from 'components/shared/centered-message';
+import notFound from 'assets/images/404-robot.png';
 
-export default () => {
-  const location = useLocation();
-  return (
-    <CenteredMessage message={`Page ${location.pathname} Not Found`} />
-  );
-};
+export default () => (
+  <img
+    style={{
+      objectFit: 'contain',
+      height: '-webkit-fill-available',
+      padding: '4%',
+    }}
+    src={notFound}
+    alt="404"
+  />
+);
