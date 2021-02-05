@@ -14,10 +14,10 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-        name: Configure dependencies
-        command: |
-          git config user.email "markanthonylumbao@gmail.com"
-          git config user.name "Mark Anthony Lumbao"
+          name: Configure dependencies
+          command: |
+            git config user.email "markanthonylumbao@gmail.com"
+            git config user.name "Mark Anthony Lumbao"
       - run: npm run deploy
   deploy-staging:
     executor: heroku/default
