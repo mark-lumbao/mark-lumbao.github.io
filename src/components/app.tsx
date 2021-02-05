@@ -1,9 +1,7 @@
 import React, {
-  lazy, useState, Suspense, ComponentType,
+  lazy, useState, Suspense,
 } from 'react';
-import {
-  BrowserRouter, HashRouter, Switch, Route,
-} from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import * as ROUTES from 'constants/routes';
 import CenteredMessage from 'components/shared/centered-message';
 
@@ -25,13 +23,6 @@ const App = () => {
     localStorage.setItem('theme', theme === 'theme-light' ? 'theme-dark' : 'theme-light');
     setTheme(theme === 'theme-light' ? 'theme-dark' : 'theme-light');
   };
-
-  /**
-   * This is a simple workaround for gh-pages BrowserRouter issue.
-   * With this, I will only use Browser router when it is deployed in Heroku
-   * where I can setup a server for it.
-   */
-  const Router: ComponentType = process.env.ENVIRONMENT === 'heroku' ? BrowserRouter : HashRouter;
 
   return (
     <div className={`${theme || 'theme-light'} transition duration-300 w-screen absolute top-0 bottom-0 flex flex-col bg-primary`}>
