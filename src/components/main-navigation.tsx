@@ -19,7 +19,7 @@ const MainNavigation = ({ toggleTheme, theme }: NavProps) => (
       <Link to={ROUTES.HOME} className="flex flex-1 items-center flex-initial">
         <img alt="logo" src={logo} className="w-8 mr-2" />
         <span className="font-bold text-base text-primaryCopy">
-          &#123; m-a-l &#125; v1.0
+          &#123; m-a-l &#125; v1.2
         </span>
       </Link>
       <div className="flex flex-1 justify-end">
