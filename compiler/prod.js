@@ -16,7 +16,7 @@ module.exports = {
     ...plugins,
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      'process.env.PUBLIC_URL': JSON.stringify('process.env.PUBLIC_URL'),
+      'process.env.ENVIRONMENT': JSON.stringify('process.env.ENVIRONMENT'),
     }),
     new CompressPlugin({
       test: /\.(js|css|html|svg)$/,

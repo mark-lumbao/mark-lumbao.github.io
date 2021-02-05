@@ -1,5 +1,9 @@
-import React, { lazy, useState, Suspense } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, {
+  lazy, useState, Suspense, ComponentType,
+} from 'react';
+import {
+  BrowserRouter, HashRouter, Switch, Route,
+} from 'react-router-dom';
 import * as ROUTES from 'constants/routes';
 import CenteredMessage from 'components/shared/centered-message';
 
@@ -22,12 +26,17 @@ const App = () => {
     setTheme(theme === 'theme-light' ? 'theme-dark' : 'theme-light');
   };
 
-  const basename = process.env.PUBLIC_URL || 'https://mark-lumbao@github.io';
+  /**
+   * This is a simple workaround for gh-pages BrowserRouter issue.
+   * With this, I will only use Browser router when it is deployed in Heroku
+   * where I can setup a server for it.
+   */
+  const Router: ComponentType = process.env.ENVIRONMENT === 'heroku' ? BrowserRouter : HashRouter;
 
   return (
     <div className={`${theme || 'theme-light'} transition duration-300 w-screen absolute top-0 bottom-0 flex flex-col bg-primary`}>
       <Suspense fallback={<CenteredMessage message="Loading Components ..." />}>
-        <Router basename={basename}>
+        <Router>
           <MainNavigation theme={theme} toggleTheme={toggleTheme} />
           <Switch>
             <Route path={ROUTES.HOME} exact component={Home} />
