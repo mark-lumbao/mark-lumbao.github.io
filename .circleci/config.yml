@@ -18,10 +18,10 @@ jobs:
           command: |
             git config user.email "markanthonylumbao@gmail.com"
             git config user.name "Mark Anthony Lumbao"
-      - run: npm run deploy
       - add_ssh_keys:
           fingerprints:
             - "67:0c:52:9d:ff:4b:36:46:09:8f:b4:be:4a:44:7a:b8"
+      - run: npm run deploy
   deploy-staging:
     executor: heroku/default
     steps:
