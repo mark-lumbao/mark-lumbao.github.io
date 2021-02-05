@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{45:function(e,t,r){"use strict";r.r(t);var a=r(0),n=r.n(a);t.default=function(){return n.a.createElement("footer",{className:"flex items-center justify-center border-dashed border-t-2 border-secondary p-3"},n.a.createElement("span",{className:"w-auto font-medium text-primaryCopy"},"© { m-a-l } | 2020"))}}}]);

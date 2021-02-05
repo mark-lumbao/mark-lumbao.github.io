@@ -1,0 +1,38 @@
+[
+  {
+    "name": "PCsian CRM App",
+    "link": "https://pcsian-crm.herokuapp.com/",
+    "language": "Typescript",
+    "toolsInvolved": [ "React", "Firebase" ]
+  },
+  {
+    "name": "CICT WVSU",
+    "link": "https://cictwvsu.com/",
+    "language": "Typescript",
+    "toolsInvolved": [ "React" ]
+  },
+  {
+    "name": "Extend Ops IFix App",
+    "link": "https://extend-ifix.herokuapp.com/",
+    "language": "Javascript",
+    "toolsInvolved": [ "React" ]
+  },
+  {
+    "name": "Extend Ops Careers App",
+    "link": "https://careers.xtendops.com",
+    "language": "Typescript",
+    "toolsInvolved": [ "React" ]
+  },
+  {
+    "name": "Extend Ops Xconnect App",
+    "link": "https://xconnect.xtendops.com",
+    "language": "Typescript",
+    "toolsInvolved": [ "React" ]
+  },
+  {
+    "name": "Boomer Inventory System",
+    "link": "https://boomerinventory.herokuapp.com/",
+    "language": "Typescript",
+    "toolsInvolved": [ "React", "MongoDB", "FeathersJS" ]
+  }
+]

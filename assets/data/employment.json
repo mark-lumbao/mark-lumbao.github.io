@@ -1,0 +1,43 @@
+[
+  {
+    "company": "Bluqube",
+    "role": "Android Game Developer",
+    "dateStarted": 1429113600,
+    "dateEnded": 1430409600,
+    "relatedProjects": []
+  },
+  {
+    "company": "Project Assistant",
+    "role": "iOS and Android App Developer",
+    "dateStarted": 1430409600,
+    "dateEnded": 1458057600,
+    "relatedProjects": []
+  },
+  {
+    "company": "Bluqube/Wynq",
+    "role": "Mobile App and Website Developer",
+    "dateStarted": 1458057600,
+    "dateEnded": 1483200000,
+    "relatedProjects": []
+  },
+  {
+    "company": "Digital Swarm",
+    "role": "Wordpress Web Developer",
+    "dateStarted": 1483200000,
+    "dateEnded": 1490976000,
+    "relatedProjects": []
+  },
+  {
+    "company": "My Cloud Crew",
+    "role": "Fullstack Web Developer",
+    "dateStarted": 1490976000,
+    "dateEnded": 1577808000,
+    "relatedProjects": []
+  },
+  {
+    "company": "Extend Business Outsourcing",
+    "role": "Front End Web Developer",
+    "dateStarted": 1577808000,
+    "relatedProjects": []
+  }
+]
