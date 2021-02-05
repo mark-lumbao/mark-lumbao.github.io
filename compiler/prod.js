@@ -1,3 +1,4 @@
+import { DefinePlugin } from 'webpack';
 import CompressPlugin from 'compression-webpack-plugin';
 import BrotliPlugin from 'brotli-webpack-plugin';
 import {
@@ -13,6 +14,10 @@ module.exports = {
   },
   plugins: [
     ...plugins,
+    new DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.PUBLIC_URL': JSON.stringify('process.env.PUBLIC_URL'),
+    }),
     new CompressPlugin({
       test: /\.(js|css|html|svg)$/,
       threshold: 10240,

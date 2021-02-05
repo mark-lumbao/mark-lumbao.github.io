@@ -22,14 +22,16 @@ const App = () => {
     setTheme(theme === 'theme-light' ? 'theme-dark' : 'theme-light');
   };
 
+  const basename = `${process.env.PUBLIC_URL}/`;
+
   return (
     <div className={`${theme || 'theme-light'} transition duration-300 w-screen absolute top-0 bottom-0 flex flex-col bg-primary`}>
       <Suspense fallback={<CenteredMessage message="Loading Components ..." />}>
-        <Router>
+        <Router basename={basename}>
           <MainNavigation theme={theme} toggleTheme={toggleTheme} />
           <Switch>
             <Route path={ROUTES.HOME} exact component={Home} />
-            <Route path="*" component={NotFound} />
+            <Route component={NotFound} />
           </Switch>
           <Footer />
         </Router>
