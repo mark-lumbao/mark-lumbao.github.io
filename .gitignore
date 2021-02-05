@@ -7,3 +7,5 @@ node_modules
 compilation-stats.json
 
 .DS_Store
+
+.env
