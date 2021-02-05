@@ -22,7 +22,7 @@ const App = () => {
     setTheme(theme === 'theme-light' ? 'theme-dark' : 'theme-light');
   };
 
-  const basename = `${process.env.PUBLIC_URL}/`;
+  const basename = process.env.PUBLIC_URL || 'https://mark-lumbao@github.io';
 
   return (
     <div className={`${theme || 'theme-light'} transition duration-300 w-screen absolute top-0 bottom-0 flex flex-col bg-primary`}>
