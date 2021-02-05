@@ -1,10 +1,11 @@
 {
-  "name": "portfolio-site",
+  "name": "mark-lumbao.github.io",
   "version": "1.0.2",
   "description": "",
   "main": "index.tsx",
   "scripts": {
     "start": "node dist-server",
+    "deploy": "npm run build:frontend && gh-pages -d dist",
     "hot": "webpack-dev-server --mode development --hot --open --env=hot",
     "build": "npm run build:frontend && npm run build:server",
     "build:frontend": "webpack --mode production --env=prod",
@@ -16,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/doldol999/portfolio-site.git"
+    "url": "git+https://github.com/mark-lumbao/portfolio-site.git"
   },
   "keywords": [],
   "author": "Mark Anthony Ballega Lumbao",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/doldol999/portfolio-site/issues"
+    "url": "https://github.com/mark-lumbao/portfolio-site/issues"
   },
-  "homepage": "https://github.com/doldol999/portfolio-site#readme",
+  "homepage": "https://mark-lumbao.github.io",
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.0",
     "@types/express": "^4.17.6",
@@ -71,6 +72,7 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "file-loader": "^6.1.1",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^3.2.0",
     "postcss-loader": "^3.0.0",
     "source-map-loader": "^0.2.4",

@@ -9,6 +9,12 @@ jobs:
       - checkout
       - node/install-packages
   deploy:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npm run deploy
+  deploy-staging:
     executor: heroku/default
     steps:
       - checkout
@@ -18,9 +24,15 @@ workflows:
     build-test-deploy:
       jobs:
         - build
-        - deploy:  
+        - deploy:
             requires:
               - build
             filters:
               branches:
                 only: master
+        - deploy-staging:
+            requires:
+              - build
+            filters:
+              branches:
+                only: dev
