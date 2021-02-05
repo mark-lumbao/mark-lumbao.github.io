@@ -1,4 +1,3 @@
-import Dotenv from 'dotenv-webpack';
 import {
   entry, output, resolve, rules, plugins,
 } from './common';
@@ -10,8 +9,5 @@ module.exports = {
   module: {
     rules,
   },
-  plugins: [
-    ...plugins,
-    new Dotenv(),
-  ],
+  plugins,
 };
