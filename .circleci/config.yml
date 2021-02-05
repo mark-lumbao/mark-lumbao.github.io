@@ -21,7 +21,7 @@ jobs:
       - run: npm run deploy
       - add_ssh_keys:
           fingerprints:
-            - "bd:ef:73:66:56:b4:3b:bc:32:b5:b5:51:13:9d:48:3b"
+            - "67:0c:52:9d:ff:4b:36:46:09:8f:b4:be:4a:44:7a:b8"
   deploy-staging:
     executor: heroku/default
     steps:
