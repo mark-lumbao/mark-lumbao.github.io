@@ -22,5 +22,17 @@
     "link": "https://careers.xtendops.com",
     "language": "Typescript",
     "toolsInvolved": [ "React" ]
+  },
+  {
+    "name": "Extend Ops Xconnect App",
+    "link": "https://xconnect.xtendops.com",
+    "language": "Typescript",
+    "toolsInvolved": [ "React" ]
+  },
+  {
+    "name": "Boomer Inventory System",
+    "link": "https://boomerinventory.herokuapp.com/",
+    "language": "Typescript",
+    "toolsInvolved": [ "React", "MongoDB", "FeathersJS" ]
   }
 ]
