@@ -1,7 +1,5 @@
-import React from 'react';
-
 const CenteredMessage = ({ message }: { message: string }) => (
-  <div className="h-screen flex justify-center items-center text-primaryCopy">
+  <div className="flex items-center justify-center h-screen text-primaryCopy">
     <h1>{message}</h1>
   </div>
 );

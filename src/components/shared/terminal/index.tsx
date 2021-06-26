@@ -1,5 +1,6 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect, useState } from 'react';
+import {
+  useEffect, useState, MouseEvent, FormEvent,
+} from 'react';
 import { TerminalResultProps, TerminalProps } from './types';
 import * as UTILS from './utils';
 
@@ -9,12 +10,12 @@ const Terminal = ({ data, scrollableContainer, ...others }: TerminalProps) => {
   const [command, setCommand] = useState('');
   const [results, setResults] = useState<TerminalResultProps[]>([]);
 
-  const handleFocusClick = (event: React.MouseEvent) => {
+  const handleFocusClick = (event: MouseEvent) => {
     event.preventDefault();
     UTILS.setFocusToInput(focusedInput);
   };
 
-  const handleFormSubmit = (event: React.FormEvent) => {
+  const handleFormSubmit = (event: FormEvent) => {
     event.preventDefault();
 
     if (!UTILS.resultFactory(command.trim(), data)) {
@@ -26,7 +27,7 @@ const Terminal = ({ data, scrollableContainer, ...others }: TerminalProps) => {
     setCommand(''); // clear command input
   };
 
-  const handleCommandInputChange = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleCommandInputChange = (event: FormEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
     setCommand(value);
   };

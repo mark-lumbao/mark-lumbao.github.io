@@ -1,4 +1,3 @@
-import React from 'react';
 import { SHOW_PROJECTS } from 'constants/commands';
 import * as UTILS from 'utils';
 import { ResultType, TerminalResultProps, TerminalData } from '../types';

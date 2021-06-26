@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { RootState } from 'store/reducers';
 import { fetchLanguagesRequest } from 'store/actions/languages';
@@ -78,10 +78,10 @@ const Home = (props: PropsFromRedux) => {
     <main
       ref={scrollableContainer}
       id="terminalContainer"
-      className="flex container sm:rounded-none rounded overflow-y-scroll bg-terminalBlack flex-1 p-5 mx-auto md:m-0 my-5"
+      className="container flex flex-1 p-5 mx-auto my-5 overflow-y-scroll rounded sm:rounded-none bg-terminalBlack md:m-0"
     >
       <Terminal
-        className="terminal h-full w-full content-start pb-5"
+        className="content-start w-full h-full pb-5 terminal"
         data={terminalProp}
         scrollableContainer={scrollableContainer.current}
       />

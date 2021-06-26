@@ -1,4 +1,3 @@
-import React from 'react';
 import notFound from 'assets/images/404-robot.png';
 
 export default () => (

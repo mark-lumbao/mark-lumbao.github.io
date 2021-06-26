@@ -1,6 +1,4 @@
-import React, {
-  lazy, useState, Suspense,
-} from 'react';
+import { lazy, useState, Suspense } from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import * as ROUTES from 'constants/routes';
 import CenteredMessage from 'components/shared/centered-message';

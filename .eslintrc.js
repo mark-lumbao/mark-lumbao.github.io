@@ -24,17 +24,21 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
-    "import/no-unresolved": 0,
-    "import/no-extraneous-dependencies": 0,
-    "import/extensions": 0,
-    "linebreak-style": 0,
-    "react/no-array-index-key": 0,
-    "@typescript-eslint/no-unused-vars": [
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
+    'import/no-unresolved': 0,
+    'import/no-extraneous-dependencies': 0,
+    'import/prefer-default-export': 'off',
+    'import/extensions': 0,
+    'linebreak-style': 0,
+    'react/no-array-index-key': 0,
+    '@typescript-eslint/no-unused-vars': [
       2,
       {
-          "args": "none"
-      }
-    ]
-  }
+        args: 'none',
+      },
+    ],
+  },
 };

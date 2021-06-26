@@ -1,4 +1,3 @@
-import React from 'react';
 import { TerminalResultProps, ResultType } from '../../types';
 import { resolveClass } from '../../utils';
 

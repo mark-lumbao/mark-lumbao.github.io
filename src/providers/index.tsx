@@ -1,7 +1,6 @@
-import React from 'react';
 import App from 'components/app';
 import ReduxProvider from './redux';
-import 'assets/tailwind.css';
+import 'scss/index.scss';
 
 // eslint-disable-next-line no-console
 console.log(
