@@ -1,7 +1,7 @@
 import App from 'components/app';
-import ReduxProvider from './redux';
 import 'scss/index.scss';
-
+import ReduxProvider from './redux';
+import ThemeProvider from './theme';
 // eslint-disable-next-line no-console
 console.log(
   '%cWHY YOU HERE BOY? t(-_-t)',
@@ -10,7 +10,9 @@ console.log(
 
 const Providers = () => (
   <ReduxProvider>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </ReduxProvider>
 );
 
