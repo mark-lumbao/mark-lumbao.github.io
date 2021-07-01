@@ -1,0 +1,17 @@
+$dark-primary-color: #333;
+$dark-secondary-color: #cdcd;
+$dark-accent-color: #fff;
+
+$primary-color: #fff;
+$secondary-color: #cdcd;
+$accent-color: #333;
+
+.theme-light {
+  background: $primary-color;
+  color: $accent-color;
+}
+
+.theme-dark {
+  background: $dark-primary-color;
+  color: $dark-accent-color;
+}

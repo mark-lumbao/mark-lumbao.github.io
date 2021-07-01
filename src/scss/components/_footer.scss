@@ -1,0 +1,13 @@
+@use './theme' as colors;
+
+footer {
+  text-align: center;
+}
+
+footer.theme-light {
+  border-top: 3px solid colors.$accent-color;
+}
+
+footer.theme-dark {
+  border-top: 3px solid colors.$dark-accent-color;
+}

@@ -1,7 +1,33 @@
-/**
- * Project's CSS Soon!
- */
+@use 'components/theme' as colors;
+@use 'components/nav';
+@use 'components/footer';
+@use 'components/container';
 
 .invert {
   filter: invert(1);
+}
+
+.img--404 {
+  object-fit: contain;
+  height: -webkit-fill-available;
+  padding: 4%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.main {
+  flex: 1;
 }

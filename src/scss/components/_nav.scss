@@ -1,0 +1,30 @@
+@use './theme' as colors;
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav.theme-light {
+  border-bottom: 3px solid colors.$accent-color;
+  .logo {
+    filter: grayscale(1);
+  }
+}
+
+nav.theme-dark {
+  border-bottom: 3px solid colors.$dark-accent-color;
+  .logo {
+    filter: invert(1);
+  }
+}
+
+nav .menu--item {
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  img {
+    width: 30px;
+  }
+}

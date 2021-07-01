@@ -1,19 +1,20 @@
-import App from 'components/app';
+import { lazy, Suspense } from 'react';
 import 'scss/index.scss';
-import ReduxProvider from './redux';
-import ThemeProvider from './theme';
-// eslint-disable-next-line no-console
-console.log(
-  '%cWHY YOU HERE BOY? t(-_-t)',
-  'font-size: 30px; color: red; font-weight: bolder; text-shadow: 2px 2px orange',
-);
+import 'utils/console-message';
+import App from 'app';
+import CenteredMessage from 'components/shared/centered-message';
+
+const ReduxProvider = lazy(() => import('./redux'));
+const ThemeProvider = lazy(() => import('./theme'));
 
 const Providers = () => (
-  <ReduxProvider>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  </ReduxProvider>
+  <Suspense fallback={<CenteredMessage message="Loading Components ..." />}>
+    <ReduxProvider>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </ReduxProvider>
+  </Suspense>
 );
 
 export default Providers;

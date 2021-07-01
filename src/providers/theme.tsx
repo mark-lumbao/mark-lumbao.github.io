@@ -1,4 +1,6 @@
-import { ReactNode, useState, createContext } from 'react';
+import {
+  ReactNode, useState, createContext, useEffect,
+} from 'react';
 
 export interface ThemeContextType {
   theme: string;
@@ -16,11 +18,16 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
     setTheme(theme === 'theme-light' ? 'theme-dark' : 'theme-light');
   };
 
+  useEffect(() => {
+    if (initialThemeValue === 'theme-dark') document.body.style.background = '#333';
+    else document.body.style.background = '#fff';
+  }, [theme]);
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className={`${theme || 'theme-light'}`}>
+      <main className={theme || 'theme-light'}>
         {children}
-      </div>
+      </main>
     </ThemeContext.Provider>
   );
 };

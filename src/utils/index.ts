@@ -4,3 +4,5 @@ export function breakObject <T>(data: T): string[] {
       `${key}: ${(data as any)[key]}`
     ));
 }
+
+export const isDark = (theme: string) => theme === 'theme-dark';
