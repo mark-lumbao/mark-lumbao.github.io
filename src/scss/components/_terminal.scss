@@ -1,0 +1,10 @@
+@use './theme' as colors;
+
+div.terminal--result {
+  padding-left: 15px;
+}
+
+.terminal input {
+  border: none;
+  background: none;
+}

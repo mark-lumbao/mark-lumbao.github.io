@@ -40,22 +40,20 @@ const Terminal = ({ data, scrollableContainer, ...others }: TerminalProps) => {
   return (
     <div
       {...others}
+      className={`terminal ${others.className}`}
       role="presentation"
       aria-label="Website Terminal"
       onClick={handleFocusClick}
       onKeyDown={() => {}}
-      // style={{ maxHeight: '75vh' }}
     >
       {UTILS.jsxResultFactory(results)}
-      {/* @NOTE
-        pb-5 class here is a temporary fix while I figure out the
-        flexibility of terminal's container
-      */}
       <form onSubmit={handleFormSubmit} autoComplete="off" className="flex flex-row pb-5">
-        <span className="text-yellow">$ &nbsp;</span>
+        <span className="terminal---prompt">
+          {'> '}
+          &nbsp;
+        </span>
         <input
-          id="terminal-input"
-          className="flex-1 outline-none text-terminalText bg-terminalBlack"
+          className="terminal--input"
           value={command}
           onChange={handleCommandInputChange}
           type="text"

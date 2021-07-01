@@ -2,6 +2,7 @@
 @use 'components/nav';
 @use 'components/footer';
 @use 'components/container';
+@use 'components/terminal';
 
 .invert {
   filter: invert(1);
