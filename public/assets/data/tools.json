@@ -12,9 +12,9 @@
     "relatedProjects": []
   },
   {
-    "name": "WordPress",
+    "name": "Neovim",
     "maturityLevel": 7,
-    "languageUsed": "PHP, HTML, JS, CSS",
+    "languageUsed": "PHP, JS, TS, HTML, CSS",
     "relatedProjects": []
   },
   {
@@ -92,11 +92,6 @@
     "name": "Cargo",
     "maturityLevel": 3,
     "languageUsed": "Rust",
-    "relatedProjects": []
-  },
-  {
-    "name": "CPanel",
-    "maturityLevel": 6,
     "relatedProjects": []
   },
   {

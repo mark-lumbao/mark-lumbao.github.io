@@ -66,7 +66,7 @@ const config: Configuration & { devServer: typeof devServer } = ({
       minify: true,
       favicon: 'src/assets/images/terminal.png',
       meta: {
-        'theme-color': '#002400',
+        'theme-color': '#222222',
       },
     }),
     // @ts-ignore
