@@ -12,6 +12,6 @@ function* fetchEmploymentAsync() {
   }
 }
 
-export default function* () {
+export default function* employmentSagas() {
   yield takeLatest(FETCH_EMPLOYMENT_REQUEST, fetchEmploymentAsync);
 }

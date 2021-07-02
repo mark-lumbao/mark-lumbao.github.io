@@ -1,0 +1,54 @@
+@use 'components/theme' as colors;
+@use 'components/nav';
+@use 'components/footer';
+@use 'components/container';
+@use 'components/terminal';
+
+@import url('https://cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css');
+
+.invert {
+  filter: invert(1);
+}
+
+.img--404 {
+  object-fit: contain;
+  height: -webkit-fill-available;
+  padding: 4%;
+}
+
+body, input {
+  padding: 0;
+  margin: 0;
+  font-family: 'Hack', sans-serif;
+}
+
+.text--loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.main {
+  flex: 1;
+}
+
+@media (max-width: 425px) {
+  body {
+    font-size: 11px;
+  }
+}

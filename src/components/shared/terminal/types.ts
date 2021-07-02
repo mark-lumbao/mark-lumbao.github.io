@@ -1,6 +1,12 @@
 import { HTMLAttributes } from 'react';
 
-export interface TerminalResultProps extends HTMLAttributes<any> {
+export enum ResultType {
+  ERROR,
+  LINK,
+  DEFAULT,
+}
+
+export interface TerminalResultProps extends HTMLAttributes<unknown> {
   command: string;
   result: { value: string, link?: string }[];
   type: ResultType;
@@ -8,18 +14,12 @@ export interface TerminalResultProps extends HTMLAttributes<any> {
 
 export type TerminalResult = TerminalResultProps;
 
-export enum ResultType {
-  ERROR,
-  LINK,
-  DEFAULT,
-}
 export interface TerminalData {
   command: string;
   result: any;
   type?: 'string-list' | 'object'
 }
 
-export interface TerminalProps extends HTMLAttributes<any> {
+export interface TerminalProps extends HTMLAttributes<unknown> {
   data: TerminalData[];
-  scrollableContainer?: HTMLDivElement;
 }

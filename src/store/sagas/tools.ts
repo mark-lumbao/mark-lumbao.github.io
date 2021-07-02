@@ -12,6 +12,6 @@ function* fetchToolsAsync() {
   }
 }
 
-export default function* () {
+export default function* toolSagas() {
   yield takeLatest(FETCH_TOOLS_REQUEST, fetchToolsAsync);
 }

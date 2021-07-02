@@ -12,6 +12,6 @@ function* fetchBioAsync() {
   }
 }
 
-export default function* () {
+export default function* bioSagass() {
   yield takeLatest(FETCH_BIO_REQUEST, fetchBioAsync);
 }

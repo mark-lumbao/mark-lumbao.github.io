@@ -12,6 +12,6 @@ function* fetchLanguages() {
   }
 }
 
-export default function* () {
+export default function* languageSagas() {
   yield takeLatest(FETCH_LANGUAGES_REQUEST, fetchLanguages);
 }

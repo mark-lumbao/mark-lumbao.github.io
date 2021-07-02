@@ -12,6 +12,6 @@ function* fetchProjectsAsync() {
   }
 }
 
-export default function* () {
+export default function* projectSagas() {
   yield takeLatest(FETCH_PROJECTS_REQUEST, fetchProjectsAsync);
 }
