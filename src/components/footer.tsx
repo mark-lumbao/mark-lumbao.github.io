@@ -5,7 +5,7 @@ const Footer = () => {
   const { theme } = useContext(ThemeContext);
   return (
     <footer className={`container ${theme}`}>
-      <span>&#169; &#123; m-a-l &#125; | 2020</span>
+      <span>&#169; &#123; m-a-l &#125; | 2021</span>
     </footer>
   );
 };
