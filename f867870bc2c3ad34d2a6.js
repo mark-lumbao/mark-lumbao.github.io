@@ -1,0 +1,1 @@
+(self.webpackChunkmark_lumbao_github_io=self.webpackChunkmark_lumbao_github_io||[]).push([[82],{7082:(a,s,e)=>{"use strict";e.r(s),e.d(s,{default:()=>r});var t=e(6865),u=e(5893);const r=function(){return(0,u.jsx)("img",{src:t,alt:"404",className:"img--404"})}},6865:(a,s,e)=>{"use strict";a.exports=e.p+"09f16efefa7ba476c959.png"}}]);
