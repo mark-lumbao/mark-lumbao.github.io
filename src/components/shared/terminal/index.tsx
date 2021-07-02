@@ -1,19 +1,17 @@
 import {
-  useEffect, useState, MouseEvent, FormEvent,
+  useEffect, useState, useRef, FormEvent,
 } from 'react';
 import { TerminalResultProps, TerminalProps } from './types';
 import * as UTILS from './utils';
 
-const Terminal = ({ data, scrollableContainer, ...others }: TerminalProps) => {
-  let focusedInput: HTMLInputElement = null;
+export const prompt = 'λ';
+
+const Terminal = ({ data, className = '', ...others }: TerminalProps) => {
+  const focusedInput = useRef();
+  const scrollableContainer = useRef();
 
   const [command, setCommand] = useState('');
   const [results, setResults] = useState<TerminalResultProps[]>([]);
-
-  const handleFocusClick = (event: MouseEvent) => {
-    event.preventDefault();
-    UTILS.setFocusToInput(focusedInput);
-  };
 
   const handleFormSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -32,24 +30,28 @@ const Terminal = ({ data, scrollableContainer, ...others }: TerminalProps) => {
     setCommand(value);
   };
 
-  useEffect(() => { // runs everytime the component renders
-    UTILS.setFocusToInput(focusedInput);
-    if (scrollableContainer) UTILS.scrollContainerToBottom(scrollableContainer);
+  useEffect(() => { // scroll to bottom on each render
+    const container = scrollableContainer.current as HTMLDivElement;
+    window.scrollTo(0, container.scrollHeight);
   });
+
+  useEffect(() => { // focus input on initial load
+    UTILS.setFocusToInput(focusedInput.current);
+  }, []);
 
   return (
     <div
       {...others}
-      className={`terminal ${others.className}`}
+      ref={scrollableContainer}
+      className={`terminal ${className}`}
       role="presentation"
       aria-label="Website Terminal"
-      onClick={handleFocusClick}
       onKeyDown={() => {}}
     >
       {UTILS.jsxResultFactory(results)}
-      <form onSubmit={handleFormSubmit} autoComplete="off" className="flex flex-row pb-5">
-        <span className="terminal---prompt">
-          {'> '}
+      <form onSubmit={handleFormSubmit} autoComplete="off">
+        <span className="terminal--prompt">
+          {`${prompt} `}
           &nbsp;
         </span>
         <input
@@ -59,7 +61,7 @@ const Terminal = ({ data, scrollableContainer, ...others }: TerminalProps) => {
           type="text"
           spellCheck={false}
           placeholder="/* use help for your guide */"
-          ref={(input) => { focusedInput = input; }}
+          ref={focusedInput}
         />
       </form>
     </div>

@@ -3,10 +3,6 @@ import * as UTILS from 'utils';
 import { ResultType, TerminalResultProps, TerminalData } from '../types';
 import TerminalResult from '../partials/result';
 
-export const scrollContainerToBottom = (
-  container: HTMLDivElement,
-) => { container.scrollTo(0, container.scrollHeight); };
-
 export const createResult = (
   props: TerminalResultProps,
 ): TerminalResultProps => props;

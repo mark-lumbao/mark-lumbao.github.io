@@ -53,11 +53,9 @@ const Home = () => {
     ]);
   }, [contentState]);
 
-  const scrollableContainer = useRef(null);
-
   return (
-    <div className="container main" ref={scrollableContainer}>
-      <Terminal data={terminalProp} scrollableContainer={scrollableContainer.current} />
+    <div id="terminalContainer" className="container main">
+      <Terminal data={terminalProp} />
     </div>
   );
 };

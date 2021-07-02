@@ -6,7 +6,7 @@ export enum ResultType {
   DEFAULT,
 }
 
-export interface TerminalResultProps extends HTMLAttributes<any> {
+export interface TerminalResultProps extends HTMLAttributes<unknown> {
   command: string;
   result: { value: string, link?: string }[];
   type: ResultType;
@@ -20,7 +20,6 @@ export interface TerminalData {
   type?: 'string-list' | 'object'
 }
 
-export interface TerminalProps extends HTMLAttributes<any> {
+export interface TerminalProps extends HTMLAttributes<unknown> {
   data: TerminalData[];
-  scrollableContainer?: HTMLDivElement;
 }

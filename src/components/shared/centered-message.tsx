@@ -1,6 +1,6 @@
 const CenteredMessage = ({ message }: { message: string }) => (
-  <div className="flex items-center justify-center h-screen text-primaryCopy">
-    <h1>{message}</h1>
+  <div className="text--loading">
+    <h3>{message}</h3>
   </div>
 );
 
