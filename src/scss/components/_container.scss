@@ -1,0 +1,17 @@
+@use './theme' as colors;
+
+.container {
+  padding: 6px;
+}
+
+.theme-light {
+  .container {
+    background: colors.$primary-color;
+  }
+}
+
+.theme-dark {
+  .container {
+    background: colors.$dark-primary-color;
+  }
+}

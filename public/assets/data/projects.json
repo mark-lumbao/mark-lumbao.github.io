@@ -12,12 +12,6 @@
     "toolsInvolved": [ "React" ]
   },
   {
-    "name": "Extend Ops IFix App",
-    "link": "https://extend-ifix.herokuapp.com/",
-    "language": "Javascript",
-    "toolsInvolved": [ "React" ]
-  },
-  {
     "name": "Extend Ops Careers App",
     "link": "https://careers.xtendops.com",
     "language": "Typescript",

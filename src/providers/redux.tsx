@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
@@ -6,7 +6,7 @@ import rootReducer from 'store/reducers';
 import rootSaga from 'store/sagas';
 
 export type ReduxProviderProps = {
-  children: React.ReactNode,
+  children: ReactNode,
 };
 
 const sagaMiddleware = createSagaMiddleware();

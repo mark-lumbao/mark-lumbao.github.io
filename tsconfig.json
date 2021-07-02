@@ -5,7 +5,7 @@
     "noImplicitAny": true,
     "module": "esnext",
     "target": "es5",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
@@ -13,9 +13,7 @@
     "lib": ["dom","esnext"],
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "strictNullChecks": false,
+    "strictNullChecks": false
   },
-  "include": ["src/**/*", "index.d.ts"], // add these to improve module resolves
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "include": ["src/**/*", "index.d.ts"] // add these to improve module resolves
 }

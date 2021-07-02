@@ -1,7 +1,13 @@
-import React from 'react';
+import { ThemeContext } from 'providers/theme';
+import { useContext } from 'react';
 
-export default () => (
-  <footer className="flex items-center justify-center border-dashed border-t-2 border-secondary p-3">
-    <span className="w-auto font-medium text-primaryCopy">&#169; &#123; m-a-l &#125; | 2020</span>
-  </footer>
-);
+const Footer = () => {
+  const { theme } = useContext(ThemeContext);
+  return (
+    <footer className={`container ${theme}`}>
+      <span>&#169; &#123; m-a-l &#125; | 2021</span>
+    </footer>
+  );
+};
+
+export default Footer;

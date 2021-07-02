@@ -5,7 +5,7 @@ import employmentSagas from './employment';
 import toolsSagas from './tools';
 import projectsSagas from './projects';
 
-export default function* () {
+export default function* rootSaga() {
   yield all([
     languagesSagas(),
     bioSagas(),

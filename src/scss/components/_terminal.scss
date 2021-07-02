@@ -1,0 +1,53 @@
+@use './theme' as colors;
+
+div.terminal--result {
+  padding-left: 30px;
+
+  .terminal--result__error {
+    color: #fb8c00;
+  }
+}
+
+.terminal--prompt, .terminal--text {
+  font-weight: bold;
+  color: #00acc1;
+}
+
+.terminal {
+  padding: 20px;
+
+  input {
+    border: none;
+    background: none;
+    font-size: 15px;
+    padding: 5px;
+    flex: 1;
+  }
+
+  input:focus {
+    outline: none !important;
+    border: 2px solid #00acc1;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #719ECE;
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 425px) {
+  .terminal {
+    padding: 10px;
+
+    input {
+      font-size: 12px;
+      padding: 5px;
+    }
+  }
+
+  div.terminal--result {
+    padding-left: 20px;
+  }
+}
