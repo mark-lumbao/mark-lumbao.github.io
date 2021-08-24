@@ -11,13 +11,11 @@ export type ReduxProviderProps = {
 
 const sagaMiddleware = createSagaMiddleware();
 
-let composeEnhancers = compose;
+const isProd = process.env.NODE_ENV !== 'production';
 
-if (process.env.NODE_ENV !== 'production') {
-  composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-}
+const composeEnhancers = isProd ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
 
-const middleware: any = [sagaMiddleware];
+const middleware = [sagaMiddleware];
 
 const store = createStore(
   rootReducer,

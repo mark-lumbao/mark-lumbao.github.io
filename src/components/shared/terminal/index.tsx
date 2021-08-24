@@ -60,7 +60,7 @@ const Terminal = ({ data, className = '', ...others }: TerminalProps) => {
           onChange={handleCommandInputChange}
           type="text"
           spellCheck={false}
-          placeholder="/* use help for your guide */"
+          placeholder="/* Enter help command for your guide */"
           ref={focusedInput}
         />
       </form>

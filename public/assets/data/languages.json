@@ -10,6 +10,11 @@
     "relatedProjects": []
   },
   {
+    "name": "Haskell",
+    "maturityLevel": 5,
+    "relatedProjects": []
+  },
+  {
     "name": "Javascript",
     "maturityLevel": 8,
     "relatedProjects": []

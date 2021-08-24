@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 
-export enum ResultType {
+export enum ResultType { // eslint-disable-line no-shadow
   ERROR,
   LINK,
   DEFAULT,
