@@ -1,6 +1,6 @@
 {
   "name": "mark-lumbao.github.io",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "My own portfolio website.",
   "main": "src/index.tsx",
   "scripts": {
