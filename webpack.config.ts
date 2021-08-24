@@ -23,7 +23,7 @@ const config: Configuration & { devServer: typeof devServer } = ({
   entry: `${__dirname}/src/index.tsx`,
   output: {
     path: `${__dirname}/dist`,
-    filename: '[id][hash].js',
+    filename: '[fullhash].js',
     chunkFilename: '[chunkhash].js',
   },
   module: {

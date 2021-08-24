@@ -1,14 +1,14 @@
 {
   "name": "mark-lumbao.github.io",
   "version": "2.0.0",
-  "description": "",
-  "main": "index.tsx",
+  "description": "My own portfolio website.",
+  "main": "src/index.tsx",
   "scripts": {
     "start": "serve dist",
     "deploy": "npm run build && gh-pages -d dist",
     "hot": "cross-env TS_NODE_PROJECT=webpack-tsconfig.json webpack serve --mode development --hot --open",
-    "build": "cross-env TS_NODE_PROJECT=webpack-tsconfig.json webpack --mode production",
-    "analyze": "cross-env TS_NODE_PROJECT=webpack-tsconfig.json webpack --analyze --mode production",
+    "build": "cross-env TS_NODE_PROJECT=webpack-tsconfig.json webpack --progress --mode production",
+    "analyze": "cross-env TS_NODE_PROJECT=webpack-tsconfig.json webpack --analyze --progress --mode production",
     "lint": "eslint --ext .js,.ts,.tsx src",
     "lint:fix": "eslint --ext .js,.ts,.tsx src --fix"
   },
