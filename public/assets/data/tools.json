@@ -1,11 +1,5 @@
 [
   {
-    "name": "Android Studio",
-    "maturityLevel": 6,
-    "languageUsed": "Java",
-    "relatedProjects": []
-  },
-  {
     "name": "Visual Studio Code",
     "maturityLevel": 8,
     "languageUsed": "PHP, JS, TS, HTML, CSS",
@@ -30,6 +24,12 @@
     "relatedProjects": []
   },
   {
+    "name": "Docker",
+    "maturityLevel": 6,
+    "languageUsed": "JS, TS",
+    "relatedProjects": []
+  },
+  {
     "name": "Babel",
     "maturityLevel": 6,
     "languageUsed": "JS, TS",
@@ -48,19 +48,13 @@
     "relatedProjects": []
   },
   {
-    "name": "NodeJS",
+    "name": "Node JS",
     "maturityLevel": 6,
     "languageUsed": "JS, ts",
     "relatedProjects": []
   },
   {
-    "name": "ExpressJS",
-    "maturityLevel": 6,
-    "languageUsed": "JS, ts",
-    "relatedProjects": []
-  },
-  {
-    "name": "FeathersJS",
+    "name": "Fastify",
     "maturityLevel": 6,
     "languageUsed": "JS, TS",
     "relatedProjects": []
@@ -83,7 +77,7 @@
     "relatedProjects": []
   },
   {
-    "name": "MongoDB, Mongoose",
+    "name": "MongoDB with Mongoose",
     "maturityLevel": 6,
     "languageUsed": "JS, TS",
     "relatedProjects": []
@@ -95,7 +89,7 @@
     "relatedProjects": []
   },
   {
-    "name": "POSTMAN",
+    "name": "Postman",
     "maturityLevel": 8,
     "relatedProjects": []
   }
