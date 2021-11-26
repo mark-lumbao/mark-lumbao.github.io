@@ -6,14 +6,13 @@ import { fetchEmploymentRequest } from 'store/actions/employment';
 import { fetchBioRequest } from 'store/actions/bio';
 import { fetchToolsRequest } from 'store/actions/tools';
 import { fetchProjectsRequest } from 'store/actions/projects';
-import Terminal from 'components/shared/terminal';
-import { TerminalData } from 'components/shared/terminal/types';
+import Terminal, { TerminalData } from 'components/shared/terminal';
 import * as COMMANDS from 'constants/commands';
 
 const Home = () => {
   const dispatch = useDispatch();
   const contentState = useSelector((state: RootState) => state);
-  const [terminalProp, setTerminalProp] = useState<TerminalData[]>([]);
+  const [terminalData, setTerminalData] = useState<TerminalData[]>([]);
 
   useEffect(() => {
     dispatch(fetchLanguagesRequest());
@@ -28,7 +27,7 @@ const Home = () => {
       languages, bio, employment, tools, projects,
     } = contentState;
 
-    setTerminalProp([
+    setTerminalData([
       {
         command: COMMANDS.SHOW_LANGUAGES,
         result: languages.data.map((item) => item.name),
@@ -43,7 +42,10 @@ const Home = () => {
       },
       {
         command: COMMANDS.SHOW_PROJECTS,
-        result: projects.data.map((item) => ({ name: item.name, link: item.link })),
+        result: projects.data.map((item) => ({
+          name: item.name,
+          link: item.link,
+        })),
       },
       {
         command: COMMANDS.SHOW_BIO,
@@ -54,8 +56,8 @@ const Home = () => {
   }, [contentState]);
 
   return (
-    <div id="terminalContainer" className="container main">
-      <Terminal data={terminalProp} />
+    <div className="container main">
+      <Terminal data={terminalData} />
     </div>
   );
 };

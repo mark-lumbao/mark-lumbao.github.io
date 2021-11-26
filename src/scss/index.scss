@@ -1,10 +1,10 @@
-@use 'components/theme' as colors;
-@use 'components/nav';
-@use 'components/footer';
-@use 'components/container';
-@use 'components/terminal';
+@use "components/theme" as colors;
+@use "components/nav";
+@use "components/footer";
+@use "components/container";
+@use "components/terminal";
 
-@import url('https://cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css');
+@import url("https://cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css");
 
 .invert {
   filter: invert(1);
@@ -16,10 +16,11 @@
   padding: 4%;
 }
 
-body, input {
+body,
+input {
   padding: 0;
   margin: 0;
-  font-family: 'Hack', sans-serif;
+  font-family: "Hack", sans-serif;
 }
 
 .text--loading {

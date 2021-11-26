@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "src", // add these to improve module resolves
+    "baseUrl": "src",
     "outDir": "dist",
     "noImplicitAny": true,
     "module": "esnext",
@@ -10,10 +10,10 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "lib": ["dom","esnext"],
+    "lib": ["dom", "esnext"],
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "strictNullChecks": false
   },
-  "include": ["src/**/*", "index.d.ts"] // add these to improve module resolves
+  "include": ["src/**/*", "index.d.ts"]
 }

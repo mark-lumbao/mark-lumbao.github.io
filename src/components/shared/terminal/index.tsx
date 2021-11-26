@@ -1,10 +1,14 @@
+import { useEffect, useState, useRef } from 'react';
+import { setFocusToInput, scrollToBottom } from 'utils';
+import { resultFactory } from 'components/shared/terminal/utils';
+import TerminalResults from 'components/shared/terminal/partials/results';
+import TerminalPrompt from 'components/shared/terminal/partials/prompt';
 import {
-  useEffect, useState, useRef, FormEvent,
-} from 'react';
-import { TerminalResultProps, TerminalProps } from './types';
-import * as UTILS from './utils';
+  TerminalResultProps,
+  TerminalProps,
+} from 'components/shared/terminal/types';
 
-export const prompt = 'λ';
+export * from 'components/shared/terminal/types';
 
 const Terminal = ({ data, className = '', ...others }: TerminalProps) => {
   const focusedInput = useRef();
@@ -13,30 +17,22 @@ const Terminal = ({ data, className = '', ...others }: TerminalProps) => {
   const [command, setCommand] = useState('');
   const [results, setResults] = useState<TerminalResultProps[]>([]);
 
-  const handleFormSubmit = (event: FormEvent) => {
-    event.preventDefault();
-
-    if (!UTILS.resultFactory(command.trim(), data)) {
+  const handleFormSubmit = () => {
+    if (!resultFactory(command.trim(), data)) {
       setResults([]); // COMMAND CLEAR RETURNS A NULL VALUE
     } else {
-      setResults([...results, UTILS.resultFactory(command.trim(), data)]);
+      setResults([...results, resultFactory(command.trim(), data)]);
     }
 
     setCommand(''); // clear command input
   };
 
-  const handleCommandInputChange = (event: FormEvent<HTMLInputElement>) => {
-    const { value } = event.currentTarget;
-    setCommand(value);
-  };
-
-  useEffect(() => { // scroll to bottom on each render
-    const container = scrollableContainer.current as HTMLDivElement;
-    window.scrollTo(0, container.scrollHeight);
+  useEffect(() => {
+    scrollToBottom(scrollableContainer.current); // scroll to bottom on each render
   });
 
-  useEffect(() => { // focus input on initial load
-    UTILS.setFocusToInput(focusedInput.current);
+  useEffect(() => {
+    setFocusToInput(focusedInput.current); // focus input on initial load
   }, []);
 
   return (
@@ -48,22 +44,13 @@ const Terminal = ({ data, className = '', ...others }: TerminalProps) => {
       aria-label="Website Terminal"
       onKeyDown={() => {}}
     >
-      {UTILS.jsxResultFactory(results)}
-      <form onSubmit={handleFormSubmit} autoComplete="off">
-        <span className="terminal--prompt">
-          {`${prompt} `}
-          &nbsp;
-        </span>
-        <input
-          className="terminal--input"
-          value={command}
-          onChange={handleCommandInputChange}
-          type="text"
-          spellCheck={false}
-          placeholder="/* Enter help command for your guide */"
-          ref={focusedInput}
-        />
-      </form>
+      <TerminalResults data={results} />
+      <TerminalPrompt
+        ref={focusedInput}
+        handleCommandChange={(value) => setCommand(value)}
+        handleCommandSubmit={() => handleFormSubmit()}
+        command={command}
+      />
     </div>
   );
 };

@@ -8,7 +8,7 @@ export enum ResultType { // eslint-disable-line no-shadow
 
 export interface TerminalResultProps extends HTMLAttributes<unknown> {
   command: string;
-  result: { value: string, link?: string }[];
+  result: { value: string; link?: string }[];
   type: ResultType;
 }
 
@@ -17,9 +17,13 @@ export type TerminalResult = TerminalResultProps;
 export interface TerminalData {
   command: string;
   result: any;
-  type?: 'string-list' | 'object'
+  type?: 'string-list' | 'object';
 }
 
 export interface TerminalProps extends HTMLAttributes<unknown> {
   data: TerminalData[];
 }
+
+export type ResultFactoryType = {
+  (command: string, data: TerminalData[]): TerminalResultProps | null;
+};

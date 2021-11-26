@@ -5,7 +5,7 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import { Configuration } from 'webpack';
 import path from 'path';
 
-const devServer = ({
+const devServer = {
   contentBase: `${__dirname}/dist`,
   compress: true,
   publicPath: 'public',
@@ -17,9 +17,9 @@ const devServer = ({
     warnings: true,
   },
   open: true,
-});
+};
 
-const config: Configuration & { devServer: typeof devServer } = ({
+const config: Configuration & { devServer: typeof devServer } = {
   entry: `${__dirname}/src/index.tsx`,
   output: {
     path: `${__dirname}/dist`,
@@ -35,11 +35,7 @@ const config: Configuration & { devServer: typeof devServer } = ({
       },
       {
         test: /\.(sc|c)ss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|svg)$/,
@@ -48,10 +44,7 @@ const config: Configuration & { devServer: typeof devServer } = ({
     ],
   },
   resolve: {
-    modules: [
-      'node_modules',
-      'src',
-    ],
+    modules: ['node_modules', 'src'],
     extensions: ['.ts', '.tsx', '.js', ',jsx'],
   },
   plugins: [
@@ -77,6 +70,6 @@ const config: Configuration & { devServer: typeof devServer } = ({
     }),
   ],
   devServer,
-});
+};
 
 export default config;

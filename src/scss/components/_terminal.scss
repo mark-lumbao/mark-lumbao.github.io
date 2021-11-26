@@ -1,4 +1,4 @@
-@use './theme' as colors;
+@use "./theme" as colors;
 
 div.terminal--result {
   padding-left: 30px;
@@ -8,7 +8,8 @@ div.terminal--result {
   }
 }
 
-.terminal--prompt, .terminal--text {
+.terminal--prompt,
+.terminal--text {
   font-weight: bold;
   color: #00acc1;
 }
@@ -28,7 +29,7 @@ div.terminal--result {
     outline: none !important;
     border: 2px solid #00acc1;
     border-radius: 5px;
-    box-shadow: 0 0 10px #719ECE;
+    box-shadow: 0 0 10px #719ece;
   }
 
   form {
