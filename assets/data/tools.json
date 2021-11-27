@@ -7,19 +7,25 @@
   },
   {
     "name": "Neovim",
-    "maturityLevel": 7,
+    "maturityLevel": 8,
     "languageUsed": "PHP, JS, TS, HTML, CSS",
     "relatedProjects": []
   },
   {
     "name": "React",
+    "maturityLevel": 8,
+    "languageUsed": "JS, TS, CSS",
+    "relatedProjects": []
+  },
+  {
+    "name": "Svelte",
     "maturityLevel": 6,
     "languageUsed": "JS, TS, CSS",
     "relatedProjects": []
   },
   {
     "name": "Webpack",
-    "maturityLevel": 6,
+    "maturityLevel": 7,
     "languageUsed": "JS, TS",
     "relatedProjects": []
   },
@@ -49,19 +55,19 @@
   },
   {
     "name": "Node JS",
-    "maturityLevel": 6,
+    "maturityLevel": 7,
     "languageUsed": "JS, ts",
     "relatedProjects": []
   },
   {
     "name": "Fastify",
-    "maturityLevel": 6,
+    "maturityLevel": 7,
     "languageUsed": "JS, TS",
     "relatedProjects": []
   },
   {
     "name": "Redux",
-    "maturityLevel": 6,
+    "maturityLevel": 8,
     "languageUsed": "JS, ts",
     "relatedProjects": []
   },
@@ -77,7 +83,7 @@
     "relatedProjects": []
   },
   {
-    "name": "MongoDB with Mongoose",
+    "name": "MongoDB",
     "maturityLevel": 6,
     "languageUsed": "JS, TS",
     "relatedProjects": []
@@ -90,7 +96,7 @@
   },
   {
     "name": "Postman",
-    "maturityLevel": 8,
+    "maturityLevel": 5,
     "relatedProjects": []
   }
 ]
