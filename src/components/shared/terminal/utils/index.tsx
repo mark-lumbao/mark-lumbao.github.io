@@ -1,9 +1,10 @@
 import { SHOW_PROJECTS } from 'constants/commands';
 import { breakObject } from 'utils';
+import { ITerminalData } from 'components/shared/terminal';
 import {
+  ITerminalResult,
   ResultType,
-  ResultFactoryType,
-} from 'components/shared/terminal/types';
+} from 'components/shared/terminal/partials/result';
 
 export const resolveClass = (res: ResultType): string => {
   switch (res) {
@@ -16,7 +17,10 @@ export const resolveClass = (res: ResultType): string => {
   }
 };
 
-export const resultFactory: ResultFactoryType = (command, data) => {
+export const resultFactory = (
+  command: string,
+  data: ITerminalData[],
+): ITerminalResult | null => {
   const commandResult = data.find((item) => item.command === command);
   const errorResult = {
     command,

@@ -1,16 +1,23 @@
-import {
-  TerminalResultProps,
-  ResultType,
-} from 'components/shared/terminal/types';
 import PromptSymbol from 'components/shared/terminal/partials/prompt/symbol';
+import { ComponentType } from 'react';
 
-interface TerminalResultComponentProps {
-  result: TerminalResultProps;
+export enum ResultType { // eslint-disable-line no-shadow
+  ERROR,
+  LINK,
+  DEFAULT,
 }
 
-const TerminalResultComponent = ({
-  result: { command, type, result },
-}: TerminalResultComponentProps) => {
+export interface ITerminalResult {
+  command: string;
+  result: { value: string; link?: string }[];
+  type: ResultType;
+}
+
+const TerminalResultComponent: ComponentType<ITerminalResult> = ({
+  command,
+  type,
+  result,
+}: ITerminalResult) => {
   const hasLink = type === ResultType.LINK;
   const hasError = type === ResultType.ERROR;
   return (

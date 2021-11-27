@@ -1,15 +1,15 @@
 import { forwardRef } from 'react';
 import PromptSymbol from './symbol';
 
-export type TerminalPromptProps = {
+export interface ITerminalPrompt {
   handleCommandSubmit: (command?: string) => void;
   handleCommandChange: (command?: string) => void;
   command: string;
-};
+}
 
-const TerminalPrompt = forwardRef<HTMLInputElement, TerminalPromptProps>(
+const TerminalPrompt = forwardRef<HTMLInputElement, ITerminalPrompt>(
   (
-    { handleCommandChange, handleCommandSubmit, command }: TerminalPromptProps,
+    { handleCommandChange, handleCommandSubmit, command }: ITerminalPrompt,
     ref,
   ) => (
     <form
