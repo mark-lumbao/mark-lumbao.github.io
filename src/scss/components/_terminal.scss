@@ -1,21 +1,24 @@
 @use "./theme" as colors;
 
 div.terminal--result {
-  padding-left: 30px;
+  padding-left: 20px;
 
   .terminal--result__error {
-    color: #fb8c00;
+    color: #fb4934;
   }
 }
 
 .terminal--prompt,
 .terminal--text {
+  color: #458588;
+}
+.terminal--prompt__symbol {
   font-weight: bold;
-  color: #00acc1;
+  color: #b8bb26;
 }
 
 .terminal {
-  padding: 20px;
+  padding: 30px;
 
   input {
     border: none;
@@ -27,9 +30,9 @@ div.terminal--result {
 
   input:focus {
     outline: none !important;
-    border: 2px solid #00acc1;
+    border: 2px solid #b8bb26;
     border-radius: 5px;
-    box-shadow: 0 0 10px #719ece;
+    box-shadow: 0 0 10px #b8bb26;
   }
 
   form {

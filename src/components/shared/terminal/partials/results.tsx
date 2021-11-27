@@ -1,11 +1,19 @@
-import { TerminalResultProps } from 'components/shared/terminal/types';
-import TerminalResult from 'components/shared/terminal/partials/result';
+import { ComponentType, HtmlHTMLAttributes } from 'react';
+import TerminalResult, {
+  ITerminalResult,
+} from 'components/shared/terminal/partials/result';
 
-export type TerminalResultsProps = { data: TerminalResultProps[] };
-const TerminalResults = ({ data: results }: TerminalResultsProps) => (
-  <div>
-    {results.map((result, index) => (
-      <TerminalResult result={result} key={index} />
+export interface ITerminalResults extends HtmlHTMLAttributes<HTMLDivElement> {
+  data: ITerminalResult[];
+}
+
+const TerminalResults: ComponentType<ITerminalResults> = ({
+  data,
+  ...htmlAttribs
+}: ITerminalResults) => (
+  <div {...htmlAttribs}>
+    {data.map((result, index) => (
+      <TerminalResult {...result} key={index} />
     ))}
   </div>
 );

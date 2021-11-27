@@ -6,13 +6,13 @@ import { fetchEmploymentRequest } from 'store/actions/employment';
 import { fetchBioRequest } from 'store/actions/bio';
 import { fetchToolsRequest } from 'store/actions/tools';
 import { fetchProjectsRequest } from 'store/actions/projects';
-import Terminal, { TerminalData } from 'components/shared/terminal';
+import Terminal, { ITerminalData } from 'components/shared/terminal';
 import * as COMMANDS from 'constants/commands';
 
 const Home = () => {
   const dispatch = useDispatch();
   const contentState = useSelector((state: RootState) => state);
-  const [terminalData, setTerminalData] = useState<TerminalData[]>([]);
+  const [terminalData, setTerminalData] = useState<ITerminalData[]>([]);
 
   useEffect(() => {
     dispatch(fetchLanguagesRequest());

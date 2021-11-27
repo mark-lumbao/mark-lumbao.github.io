@@ -1,21 +1,36 @@
-import { useEffect, useState, useRef } from 'react';
+import {
+  useEffect,
+  useState,
+  useRef,
+  HtmlHTMLAttributes,
+  ComponentType,
+} from 'react';
 import { setFocusToInput, scrollToBottom } from 'utils';
 import { resultFactory } from 'components/shared/terminal/utils';
 import TerminalResults from 'components/shared/terminal/partials/results';
 import TerminalPrompt from 'components/shared/terminal/partials/prompt';
-import {
-  TerminalResultProps,
-  TerminalProps,
-} from 'components/shared/terminal/types';
+import { ITerminalResult } from 'components/shared/terminal/partials/result';
 
-export * from 'components/shared/terminal/types';
+export interface ITerminalData {
+  command: string;
+  result: any; // TODO Obliterate this nasty any
+  type?: 'string-list' | 'object';
+}
 
-const Terminal = ({ data, className = '', ...others }: TerminalProps) => {
+export interface ITerminal extends HtmlHTMLAttributes<HTMLDivElement> {
+  data: ITerminalData[];
+}
+
+const Terminal: ComponentType<ITerminal> = ({
+  data,
+  className = '',
+  ...others
+}: ITerminal) => {
   const focusedInput = useRef();
   const scrollableContainer = useRef();
 
   const [command, setCommand] = useState('');
-  const [results, setResults] = useState<TerminalResultProps[]>([]);
+  const [results, setResults] = useState<ITerminalResult[]>([]);
 
   const handleFormSubmit = () => {
     if (!resultFactory(command.trim(), data)) {
